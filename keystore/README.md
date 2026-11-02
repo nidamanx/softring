@@ -10,5 +10,6 @@
 
 The release key itself is never stored in the repository, not even encrypted:
 it lives only in the repository secrets and in an offline backup
-(docs/MAINTAINING.md). Never replace it: a new key means users cannot update
+(docs/MAINTAINING.md); the Build workflow fails if a key file appears
+(`scripts/check-secrets.sh`). Never replace it: a new key means users cannot update
 and must uninstall and reinstall the app.

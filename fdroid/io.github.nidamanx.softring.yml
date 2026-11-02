@@ -21,7 +21,7 @@ Binaries: https://github.com/nidamanx/softring/releases/download/v%v/softring-%v
 Builds:
   - versionName: 1.0.0
     versionCode: 1
-    commit: ec63e12d4b7e73a8b0ef84cd4c9d5eb340bd7171
+    commit: b6b1a09d4388484992786fb1da7eafc25edc29e7
     subdir: app
     gradle:
       - yes

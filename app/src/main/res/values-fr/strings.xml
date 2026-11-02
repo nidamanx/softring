@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tagline">Une sonnerie plus douce quand il le faut.</string>
+
+    <string name="enable">Baisser le volume</string>
+    <string name="section_hours">Quand</string>
+    <string name="start">Début</string>
+    <string name="end">Fin</string>
+    <string name="section_volume">Volume réduit</string>
+    <string name="ring">Appels</string>
+    <string name="notifications">Messages et notifications</string>
+
+    <string name="status_off">SoftRing est désactivé. Activez-le ci-dessous.</string>
+    <string name="status_invalid">Le début et la fin doivent être différents.</string>
+    <string name="status_active">Volume réduit jusqu\'à %1$s.</string>
+    <string name="status_next">Le volume baisse à %1$s.</string>
+    <string name="status_ringer_silent">En vibreur ou silencieux, le volume n\'est pas modifié.</string>
+
+    <string name="perm_dnd_title">Pour baisser le volume pendant un mode</string>
+    <string name="perm_dnd_text">Pendant qu\'un mode est actif (Heure du coucher, Ne pas déranger…), Android ne laisse changer le volume qu\'aux applications ayant « l\'accès à Ne pas déranger ». SoftRing ne l\'utilise que pour le volume : il ne lit ni ne modifie vos modes. Si vous n\'utilisez pas de modes, vous pouvez vous en passer.</string>
+    <string name="perm_dnd_button">Autoriser l\'accès</string>
+    <string name="perm_exact_title">Heure exacte non autorisée</string>
+    <string name="perm_exact_text">Sans l\'autorisation « Alarmes et rappels », Android peut retarder le changement de volume, parfois longtemps.</string>
+    <string name="perm_exact_text_required">Sans l\'autorisation « Alarmes et rappels », à partir d\'Android 17 SoftRing ne peut pas changer le volume quand l\'application est fermée : pendant vos horaires, le volume resterait tel quel.</string>
+    <string name="perm_exact_button">Autoriser</string>
+
+    <string name="note_follows_hours">SoftRing suit ces horaires, pas les modes d\'Android (Ne pas déranger, Heure du coucher…). Réglez-les comme le mode que vous utilisez (pour dormir, au travail…).</string>
+
+    <string name="when_schedule">Pendant ces horaires</string>
+    <string name="when_always">Toujours, jusqu\'à ce que vous désactiviez SoftRing</string>
+    <string name="status_always">Volume réduit jusqu\'à ce que vous désactiviez SoftRing.</string>
+    <string name="preview_hint">Quand vous relâchez un curseur, vous entendez comment ça sonnera.</string>
+    <string name="preview_unavailable">L\'aperçu du volume nécessite Android 9 ou une version ultérieure.</string>
+    <string name="volume_capped">Il est à %1$d maintenant : SoftRing n\'augmente jamais le volume, il restera à %1$d.</string>
+    <string name="preview_silent">Téléphone en vibreur ou silencieux : pas d\'aperçu.</string>
+    <string name="volume_value_now">%1$d / %2$d · actuel %3$d</string>
+    <string name="perm_dnd_dismiss">Je n\'utilise pas de modes</string>
+    <string name="tile_off">Désactivé</string>
+    <string name="tile_always">Toujours</string>
+    <string name="tile_until">Jusqu\'à %1$s</string>
+    <string name="tile_from">À partir de %1$s</string>
+    <string name="add_tile">Ajouter aux Réglages rapides</string>
+    <string name="volume_channel_name">Changement de volume</string>
+    <string name="volume_notification_text">Changement du volume en cours</string>
+    <!-- About page -->
+    <string name="info_title">À propos</string>
+    <string name="info_version">Version %1$s</string>
+    <string name="info_how_title">Fonctionnement</string>
+    <string name="info_how_text">SoftRing baisse le volume de la sonnerie et des notifications aux heures que vous choisissez, ou en permanence, puis remet les volumes d\'avant.</string>
+    <string name="info_modes_text">Il suit ses propres horaires, pas les modes d\'Android (Ne pas déranger, Heure du coucher…). Si un mode laisse passer les appels, SoftRing baisse quand même le volume.</string>
+    <string name="info_never_title">Ce qu\'il ne touche jamais</string>
+    <string name="info_never_media">Les alarmes et les médias.</string>
+    <string name="info_never_vibrate">Le vibreur et le silencieux : si le téléphone est en vibreur ou silencieux, il le reste, et quand le son revient SoftRing remet les bons volumes dans les 15 minutes, ou tout de suite si vous ouvrez l\'application.</string>
+    <string name="info_never_raise">Il n\'augmente jamais le volume : si le volume de jour est déjà plus bas que le volume réduit, il reste tel quel.</string>
+    <string name="info_battery_title">Batterie</string>
+    <string name="info_battery_text">SoftRing ne reste pas en cours d\'exécution : Android le lance seulement un instant quand le volume doit changer, en général deux fois par jour. Inutile de garder l\'application ouverte ou de la retirer de l\'optimisation de la batterie : vous pouvez la fermer (mais pas avec « Forcer l\'arrêt »), SoftRing continue de fonctionner.</string>
+    <string name="info_privacy_title">Confidentialité</string>
+    <string name="info_privacy_text">Aucun accès à Internet, aucune collecte de données, ni publicité ni traceurs. Aucun accès au micro, à l\'appareil photo, à la position, aux contacts, au téléphone, aux messages, aux fichiers ni à aucune autre donnée personnelle : il ne sait pas qui vous appelle et ne lit pas vos notifications. Les paramètres sont exclus des sauvegardes et des transferts entre téléphones.</string>
+    <string name="info_permissions_title">Autorisations</string>
+    <string name="info_perm_dnd">Accès à Ne pas déranger : pour changer le volume quand un mode est actif.</string>
+    <string name="info_perm_exact">Alarmes et rappels : pour changer le volume à l\'heure exacte.</string>
+    <string name="info_perm_fgs">Service au premier plan : à partir d\'Android 17, un instant à chaque changement de volume.</string>
+    <string name="info_author">Auteur : %1$s</string>
+    <string name="info_license">Logiciel libre, licence GNU AGPL v3 ou ultérieure</string>
+    <string name="info_source">Code source et signalements : %1$s</string>
+    <string name="back">Retour</string>
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tagline">Un tono más suave cuando lo necesitas.</string>
+
+    <string name="enable">Bajar el volumen</string>
+    <string name="section_hours">Cuándo</string>
+    <string name="start">Inicio</string>
+    <string name="end">Fin</string>
+    <string name="section_volume">Volumen reducido</string>
+    <string name="ring">Llamadas</string>
+    <string name="notifications">Mensajes y notificaciones</string>
+
+    <string name="status_off">SoftRing está apagado. Actívalo abajo.</string>
+    <string name="status_invalid">El inicio y el fin deben ser distintos.</string>
+    <string name="status_active">Volumen reducido hasta las %1$s h.</string>
+    <string name="status_next">El volumen baja a las %1$s h.</string>
+    <string name="status_ringer_silent">En vibración o silencio, el volumen no se cambia.</string>
+
+    <string name="perm_dnd_title">Para bajar el volumen durante un modo</string>
+    <string name="perm_dnd_text">Mientras hay un modo activo (Hora de dormir, No molestar…), Android solo deja cambiar el volumen a las apps con «acceso a No molestar». SoftRing lo usa solo para el volumen: no lee ni cambia tus modos. Si no usas modos, puedes prescindir de él.</string>
+    <string name="perm_dnd_button">Conceder acceso</string>
+    <string name="perm_exact_title">Hora exacta no permitida</string>
+    <string name="perm_exact_text">Sin el permiso «Alarmas y recordatorios», Android puede retrasar el cambio de volumen, a veces mucho.</string>
+    <string name="perm_exact_text_required">Sin el permiso «Alarmas y recordatorios», desde Android 17 SoftRing no puede cambiar el volumen con la aplicación cerrada: en tu horario el volumen se quedaría como está.</string>
+    <string name="perm_exact_button">Permitir</string>
+
+    <string name="note_follows_hours">SoftRing sigue este horario, no los modos de Android (No molestar, Hora de dormir…). Ajústalo como el modo que usas (para dormir, en el trabajo…).</string>
+
+    <string name="when_schedule">En este horario</string>
+    <string name="when_always">Siempre, hasta que apagues SoftRing</string>
+    <string name="status_always">Volumen reducido hasta que apagues SoftRing.</string>
+    <string name="preview_hint">Al soltar un control deslizante, oyes cómo sonará.</string>
+    <string name="preview_unavailable">La vista previa del volumen requiere Android 9 o posterior.</string>
+    <string name="volume_capped">Ahora está en %1$d: SoftRing nunca sube el volumen, se quedará en %1$d.</string>
+    <string name="preview_silent">Teléfono en vibración o silencio: sin vista previa.</string>
+    <string name="volume_value_now">%1$d / %2$d · ahora %3$d</string>
+    <string name="perm_dnd_dismiss">No uso modos</string>
+    <string name="tile_off">Apagado</string>
+    <string name="tile_always">Siempre</string>
+    <string name="tile_until">Fin %1$s</string>
+    <string name="tile_from">Inicio %1$s</string>
+    <string name="add_tile">Añadir a Ajustes rápidos</string>
+    <string name="volume_channel_name">Cambio de volumen</string>
+    <string name="volume_notification_text">Cambiando el volumen</string>
+    <!-- About page -->
+    <string name="info_title">Información</string>
+    <string name="info_version">Versión %1$s</string>
+    <string name="info_how_title">Cómo funciona</string>
+    <string name="info_how_text">SoftRing baja el volumen del tono y de las notificaciones en el horario que elijas, o siempre, y al final vuelve a poner los volúmenes de antes.</string>
+    <string name="info_modes_text">Sigue su propio horario, no los modos de Android (No molestar, Hora de dormir…). Si un modo deja pasar las llamadas, SoftRing baja el volumen igualmente.</string>
+    <string name="info_never_title">Lo que nunca toca</string>
+    <string name="info_never_media">Las alarmas y el contenido multimedia.</string>
+    <string name="info_never_vibrate">La vibración y el silencio: si el teléfono está en vibración o en silencio, se queda así, y cuando vuelve el sonido SoftRing restablece los volúmenes correctos en 15 minutos como máximo, o al instante si abres la aplicación.</string>
+    <string name="info_never_raise">Nunca sube el volumen: si el volumen de día ya es más bajo que el reducido, se queda como está.</string>
+    <string name="info_battery_title">Batería</string>
+    <string name="info_battery_text">SoftRing no se queda en ejecución: Android lo inicia solo un instante cuando el volumen tiene que cambiar, normalmente dos veces al día. No hace falta dejar la aplicación abierta ni quitarla de la optimización de batería: puedes cerrarla (pero no con «Forzar detención»), SoftRing sigue funcionando.</string>
+    <string name="info_privacy_title">Privacidad</string>
+    <string name="info_privacy_text">Sin acceso a internet, sin recopilación de datos, sin anuncios ni rastreadores. Sin acceso al micrófono, la cámara, la ubicación, los contactos, el teléfono, los mensajes, los archivos ni ningún otro dato personal: no sabe quién te llama y no lee tus notificaciones. Los ajustes están excluidos de las copias de seguridad y de las transferencias entre teléfonos.</string>
+    <string name="info_permissions_title">Permisos</string>
+    <string name="info_perm_dnd">Acceso a No molestar: para cambiar el volumen mientras hay un modo activo.</string>
+    <string name="info_perm_exact">Alarmas y recordatorios: para cambiar el volumen a la hora exacta.</string>
+    <string name="info_perm_fgs">Servicio en primer plano: desde Android 17, un instante en cada cambio de volumen.</string>
+    <string name="info_author">Autor: %1$s</string>
+    <string name="info_license">Software libre, licencia GNU AGPL v3 o posterior</string>
+    <string name="info_source">Código fuente y avisos de problemas: %1$s</string>
+    <string name="back">Atrás</string>
+</resources>

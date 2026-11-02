@@ -1,0 +1,30 @@
+SoftRing baisse le volume de la sonnerie et des notifications pendant les heures que vous choisissez, la nuit, au travail ou en permanence, puis rétablit les volumes précédents.
+
+Les modes d'Android, comme « Ne pas déranger », permettent déjà de choisir qui peut vous joindre la nuit. SoftRing veille à ce que, lorsque quelqu'un le fait, le téléphone ne vous réveille pas en sursaut.
+
+<b>Fonctionnalités</b>
+<ul>
+<li>Heures au choix (par défaut 22:00–07:00)</li>
+<li>Ou « Toujours » : le volume reste réduit jusqu'à ce que vous le désactiviez, par exemple au bureau</li>
+<li>Écoutez d'abord : en relâchant un curseur, le son est joué à ce niveau (Android 9+)</li>
+<li>Suit ses propres horaires, pas les modes d'Android : réglez-les comme votre mode de sommeil, même en journée (ex. 10:00–17:00)</li>
+<li>Volume réduit distinct pour les appels et pour les messages et notifications</li>
+<li>Volumes de jour rétablis automatiquement le matin</li>
+<li>Continue de fonctionner après un redémarrage, même avant le déverrouillage</li>
+<li>Tuile dans les Réglages rapides : voyez si SoftRing est actif, et jusqu'à quand, et activez-le ou désactivez-le d'un geste</li>
+<li>Le volume des alarmes et des médias n'est jamais modifié</li>
+<li>Les sonneries personnalisées, par exemple celle d'un contact, restent les mêmes : SoftRing ne change que le volume, jamais les sons</li>
+<li>Si le téléphone est en mode vibreur ou silencieux, il est laissé tel quel</li>
+<li>Thème clair et sombre selon le système : lavande le jour, indigo la nuit</li>
+<li>Consommation de batterie négligeable : il ne s'active qu'un instant quand le volume doit changer</li>
+</ul>
+
+<b>Confidentialité</b>
+<ul>
+<li>Aucun accès à Internet, aucune collecte de données, ni publicité ni traceurs</li>
+<li>Paramètres exclus des sauvegardes et des transferts entre téléphones, pour protéger votre vie privée</li>
+<li>Aucun accès au micro, à l'appareil photo, à la position, aux contacts, au téléphone, aux messages, aux fichiers ni à aucune autre donnée personnelle : ne sait pas qui vous appelle et ne lit pas vos notifications</li>
+<li>Votre sonnerie et le son des notifications ne sont joués que comme bref aperçu quand vous déplacez un curseur</li>
+<li>Seulement cinq autorisations : démarrage après un redémarrage, changement du volume pendant « Ne pas déranger », changement à l'heure exacte et, à partir d'Android 17, un service au premier plan d'un instant pour appliquer le changement</li>
+<li>Logiciel libre, aucune bibliothèque tierce, builds conçus pour être reproductibles</li>
+</ul>

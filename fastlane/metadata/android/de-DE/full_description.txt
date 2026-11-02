@@ -1,0 +1,30 @@
+SoftRing senkt die Lautstärke von Klingelton und Benachrichtigungen zu den Zeiten, die du wählst, nachts, bei der Arbeit oder immer, und stellt danach die vorherige Lautstärke wieder her.
+
+Die Android-Modi, wie „Bitte nicht stören“, legen bereits fest, wer dich nachts erreichen darf. SoftRing sorgt dafür, dass dich das Telefon dann nicht aus dem Schlaf reißt.
+
+<b>Funktionen</b>
+<ul>
+<li>Frei wählbare Zeit (voreingestellt 22:00–07:00)</li>
+<li>Oder „Immer“: die Lautstärke bleibt gesenkt, bis du es ausschaltest, zum Beispiel im Büro</li>
+<li>Erst hören: beim Loslassen eines Reglers erklingt der Ton in dieser Lautstärke (Android 9+)</li>
+<li>Folgt einer eigenen Zeit, nicht den Android-Modi: stelle sie wie deinen Schlafmodus ein, auch tagsüber (z. B. 10:00–17:00)</li>
+<li>Getrennte gesenkte Lautstärke für Anrufe sowie für Nachrichten und Benachrichtigungen</li>
+<li>Die Tageslautstärke wird morgens automatisch wiederhergestellt</li>
+<li>Funktioniert auch nach einem Neustart, sogar vor dem Entsperren</li>
+<li>Kachel in den Schnelleinstellungen: zeigt, ob SoftRing an ist und bis wann, und schaltet es mit einem Tippen</li>
+<li>Die Lautstärke von Weckern und Medien wird nie verändert</li>
+<li>Eigene Klingeltöne, zum Beispiel der eines Kontakts, bleiben gleich: SoftRing ändert nur die Lautstärke, nie die Töne</li>
+<li>Ist das Telefon auf Vibration oder lautlos gestellt, bleibt es unverändert</li>
+<li>Helles und dunkles Design je nach System: Lavendel am Tag, Indigo in der Nacht</li>
+<li>Vernachlässigbarer Akkuverbrauch: wird nur kurz aktiv, wenn sich die Lautstärke ändern soll</li>
+</ul>
+
+<b>Datenschutz</b>
+<ul>
+<li>Kein Internetzugriff, keine Datenerfassung, keine Werbung, keine Tracker</li>
+<li>Einstellungen von Backups und Übertragungen zwischen Telefonen ausgeschlossen, um deine Privatsphäre zu schützen</li>
+<li>Kein Zugriff auf Mikrofon, Kamera, Standort, Kontakte, Telefon, Nachrichten, Dateien oder andere persönliche Daten: weiß nicht, wer anruft, und liest deine Benachrichtigungen nicht</li>
+<li>Dein Klingelton und Benachrichtigungston werden nur als kurze Vorschau abgespielt, wenn du einen Regler bewegst</li>
+<li>Nur fünf Berechtigungen: Start nach einem Neustart, Lautstärkeänderung bei aktivem „Bitte nicht stören“, Änderung zur genauen Uhrzeit und, ab Android 17, ein Vordergrunddienst für einen Augenblick, um die Änderung anzuwenden</li>
+<li>Freie Software, keine Bibliotheken von Drittanbietern, auf reproduzierbare Builds ausgelegt</li>
+</ul>

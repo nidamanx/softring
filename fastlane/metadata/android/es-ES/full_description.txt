@@ -1,0 +1,30 @@
+SoftRing baja el volumen del tono de llamada y de las notificaciones en las horas que elijas, por la noche, en el trabajo o siempre, y después restablece los volúmenes anteriores.
+
+Los modos de Android, como «No molestar», ya permiten elegir quién puede contactarte por la noche. SoftRing se asegura de que, cuando alguien lo hace, el teléfono no te despierte de golpe.
+
+<b>Funciones</b>
+<ul>
+<li>Horario a elegir (predeterminado 22:00–07:00)</li>
+<li>O «Siempre»: el volumen se queda reducido hasta que lo apagues, por ejemplo en la oficina</li>
+<li>Escucha antes: al soltar un control se oye el sonido a ese nivel (Android 9+)</li>
+<li>Sigue su propio horario, no los modos de Android: ajústalo como tu modo de descanso, incluso de día (p. ej., 10:00–17:00)</li>
+<li>Volumen reducido separado para llamadas y para mensajes y notificaciones</li>
+<li>Los volúmenes de día se restablecen automáticamente por la mañana</li>
+<li>Sigue funcionando tras un reinicio, incluso antes de desbloquear el teléfono</li>
+<li>Icono en Ajustes rápidos: ves si SoftRing está activo, y hasta cuándo, y lo activas o desactivas con un toque</li>
+<li>El volumen de las alarmas y del contenido multimedia nunca se modifica</li>
+<li>Los tonos personalizados, por ejemplo el de un contacto, no cambian: SoftRing solo cambia el volumen, nunca los sonidos</li>
+<li>Si el teléfono está en vibración o en silencio, se deja tal como está</li>
+<li>Tema claro y oscuro según el sistema: lavanda de día, índigo de noche</li>
+<li>Consumo de batería insignificante: solo se activa un instante cuando el volumen tiene que cambiar</li>
+</ul>
+
+<b>Privacidad</b>
+<ul>
+<li>Sin acceso a internet, sin recopilación de datos, sin anuncios ni rastreadores</li>
+<li>Ajustes excluidos de las copias de seguridad y de las transferencias entre teléfonos, para proteger tu privacidad</li>
+<li>Sin acceso al micrófono, la cámara, la ubicación, los contactos, el teléfono, los mensajes, los archivos ni ningún otro dato personal: no sabe quién te llama y no lee tus notificaciones</li>
+<li>Tu tono y el sonido de notificación solo se reproducen como breve vista previa cuando mueves un control</li>
+<li>Solo cinco permisos: inicio tras un reinicio, cambio de volumen con «No molestar» activo, cambio a la hora exacta y, desde Android 17, un servicio en primer plano de un instante para aplicar el cambio</li>
+<li>Software libre, sin bibliotecas de terceros, compilaciones diseñadas para ser reproducibles</li>
+</ul>

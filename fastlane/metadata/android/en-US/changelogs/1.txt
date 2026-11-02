@@ -1,0 +1,1 @@
+First release. Lowers the ringtone and notification volume during the hours you choose or always, with separate levels for calls and messages, and restores them by itself. Also works while a mode is on and when you restart the phone, even before unlocking it. For Android 8 and later. Quick Settings tile and volume preview. No internet access, no backup of your settings.

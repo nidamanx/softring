@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tagline">Ein sanfterer Klingelton, wenn du ihn brauchst.</string>
+
+    <string name="enable">Lautstärke senken</string>
+    <string name="section_hours">Wann</string>
+    <string name="start">Beginn</string>
+    <string name="end">Ende</string>
+    <string name="section_volume">Gesenkte Lautstärke</string>
+    <string name="ring">Anrufe</string>
+    <string name="notifications">Nachrichten und Benachrichtigungen</string>
+
+    <string name="status_off">SoftRing ist ausgeschaltet. Schalte es unten ein.</string>
+    <string name="status_invalid">Beginn und Ende müssen sich unterscheiden.</string>
+    <string name="status_active">Lautstärke gesenkt bis %1$s.</string>
+    <string name="status_next">Die Lautstärke wird um %1$s gesenkt.</string>
+    <string name="status_ringer_silent">Bei Vibration oder lautlos wird die Lautstärke nicht geändert.</string>
+
+    <string name="perm_dnd_title">Um die Lautstärke während eines Modus zu senken</string>
+    <string name="perm_dnd_text">Während ein Modus aktiv ist (Schlafenszeit, „Bitte nicht stören“…), dürfen nur Apps mit dem Zugriff auf „Bitte nicht stören“ die Lautstärke ändern. SoftRing nutzt ihn nur für die Lautstärke: Es liest und ändert deine Modi nicht. Wenn du keine Modi nutzt, kannst du darauf verzichten.</string>
+    <string name="perm_dnd_button">Zugriff erlauben</string>
+    <string name="perm_exact_title">Genaue Uhrzeit nicht erlaubt</string>
+    <string name="perm_exact_text">Ohne die Berechtigung „Wecker und Erinnerungen“ kann Android die Änderung der Lautstärke verzögern, manchmal deutlich.</string>
+    <string name="perm_exact_text_required">Ohne die Berechtigung „Wecker und Erinnerungen“ kann SoftRing ab Android 17 die Lautstärke nicht ändern, solange die App geschlossen ist: In deinen Zeiten bliebe die Lautstärke unverändert.</string>
+    <string name="perm_exact_button">Erlauben</string>
+
+    <string name="note_follows_hours">SoftRing folgt dieser Zeit, nicht den Android-Modi („Bitte nicht stören“, Schlafenszeit…). Stelle sie wie den Modus ein, den du nutzt (zum Schlafen, bei der Arbeit…).</string>
+
+    <string name="when_schedule">In diesem Zeitraum</string>
+    <string name="when_always">Immer, bis du SoftRing ausschaltest</string>
+    <string name="status_always">Lautstärke gesenkt, bis du SoftRing ausschaltest.</string>
+    <string name="preview_hint">Wenn du einen Regler loslässt, hörst du, wie es klingen wird.</string>
+    <string name="preview_unavailable">Die Lautstärkevorschau erfordert Android 9 oder neuer.</string>
+    <string name="volume_capped">Jetzt ist sie auf %1$d: SoftRing erhöht die Lautstärke nie, sie bleibt bei %1$d.</string>
+    <string name="preview_silent">Telefon auf Vibration oder lautlos: keine Vorschau.</string>
+    <string name="volume_value_now">%1$d / %2$d · jetzt %3$d</string>
+    <string name="perm_dnd_dismiss">Ich nutze keine Modi</string>
+    <string name="tile_off">Aus</string>
+    <string name="tile_always">Immer</string>
+    <string name="tile_until">Bis %1$s</string>
+    <string name="tile_from">Ab %1$s</string>
+    <string name="add_tile">Zu den Schnelleinstellungen hinzufügen</string>
+    <string name="volume_channel_name">Lautstärkeänderung</string>
+    <string name="volume_notification_text">Lautstärke wird geändert</string>
+    <!-- About page -->
+    <string name="info_title">Info</string>
+    <string name="info_version">Version %1$s</string>
+    <string name="info_how_title">So funktioniert es</string>
+    <string name="info_how_text">SoftRing senkt die Lautstärke von Klingelton und Benachrichtigungen zu den Zeiten, die du wählst, oder immer, und stellt am Ende die vorherige Lautstärke wieder her.</string>
+    <string name="info_modes_text">Es folgt seinen eigenen Zeiten, nicht den Android-Modi („Bitte nicht stören“, Schlafenszeit…). Lässt ein Modus Anrufe durch, senkt SoftRing die Lautstärke trotzdem.</string>
+    <string name="info_never_title">Was es nie verändert</string>
+    <string name="info_never_media">Wecker und Medien.</string>
+    <string name="info_never_vibrate">Vibration und lautlos: Ist das Telefon auf Vibration oder lautlos gestellt, bleibt es so, und wenn der Ton zurückkommt, stellt SoftRing innerhalb von 15 Minuten die richtige Lautstärke wieder her, oder sofort, wenn du die App öffnest.</string>
+    <string name="info_never_raise">Es erhöht nie die Lautstärke: Ist die Tageslautstärke schon niedriger als die gesenkte, bleibt sie, wie sie ist.</string>
+    <string name="info_battery_title">Akku</string>
+    <string name="info_battery_text">SoftRing läuft nicht dauerhaft: Android startet es nur einen Augenblick, wenn sich die Lautstärke ändern soll, meist zweimal am Tag. Du musst die App weder geöffnet lassen noch aus der Akku-Optimierung nehmen: Du kannst sie schließen (aber nicht mit „Beenden erzwingen“), SoftRing funktioniert trotzdem.</string>
+    <string name="info_privacy_title">Datenschutz</string>
+    <string name="info_privacy_text">Kein Internetzugriff, keine Datenerfassung, keine Werbung, keine Tracker. Kein Zugriff auf Mikrofon, Kamera, Standort, Kontakte, Telefon, Nachrichten, Dateien oder andere persönliche Daten: Es weiß nicht, wer anruft, und liest deine Benachrichtigungen nicht. Die Einstellungen sind von Backups und Übertragungen zwischen Telefonen ausgeschlossen.</string>
+    <string name="info_permissions_title">Berechtigungen</string>
+    <string name="info_perm_dnd">Zugriff auf „Bitte nicht stören“: um die Lautstärke zu ändern, während ein Modus aktiv ist.</string>
+    <string name="info_perm_exact">Wecker und Erinnerungen: um die Lautstärke zur genauen Uhrzeit zu ändern.</string>
+    <string name="info_perm_fgs">Vordergrunddienst: ab Android 17, einen Augenblick bei jeder Lautstärkeänderung.</string>
+    <string name="info_author">Autor: %1$s</string>
+    <string name="info_license">Freie Software, Lizenz GNU AGPL v3 oder später</string>
+    <string name="info_source">Quellcode und Fehlermeldungen: %1$s</string>
+    <string name="back">Zurück</string>
+</resources>

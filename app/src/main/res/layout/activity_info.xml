@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+<!-- About page: what SoftRing does and does not do, battery, privacy, permissions, author -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/back"
+                android:src="@drawable/ic_back"
+                android:tint="?android:attr/textColorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/info_title"
+                android:textAppearance="@android:style/TextAppearance.Material.Title"
+                android:textColor="?android:attr/textColorPrimary" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:importantForAccessibility="no"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textAppearance="@android:style/TextAppearance.Material.Headline"
+            android:textColor="?android:attr/textColorPrimary" />
+
+        <TextView
+            android:id="@+id/info_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            android:textColor="?android:attr/textColorSecondary" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/tagline"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            android:textColor="?android:attr/textColorSecondary" />
+
+        <TextView
+            style="@style/Softring.SectionLabel"
+            android:text="@string/info_how_title" />
+
+        <TextView
+            style="@style/Softring.InfoText"
+            android:text="@string/info_how_text" />
+
+        <TextView
+            style="@style/Softring.InfoText"
+            android:text="@string/info_modes_text" />
+
+        <TextView
+            style="@style/Softring.SectionLabel"
+            android:text="@string/info_never_title" />
+
+        <TextView
+            android:id="@+id/info_never"
+            style="@style/Softring.InfoText" />
+
+        <TextView
+            style="@style/Softring.SectionLabel"
+            android:text="@string/info_battery_title" />
+
+        <TextView
+            style="@style/Softring.InfoText"
+            android:text="@string/info_battery_text" />
+
+        <TextView
+            style="@style/Softring.SectionLabel"
+            android:text="@string/info_privacy_title" />
+
+        <TextView
+            style="@style/Softring.InfoText"
+            android:text="@string/info_privacy_text" />
+
+        <TextView
+            style="@style/Softring.SectionLabel"
+            android:text="@string/info_permissions_title" />
+
+        <TextView
+            android:id="@+id/info_permissions"
+            style="@style/Softring.InfoText" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="24dp"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/info_author"
+            style="@style/Softring.Note"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            style="@style/Softring.Note"
+            android:layout_marginTop="2dp"
+            android:text="@string/info_license" />
+
+        <!-- Opens the repository in the browser: SoftRing itself has no internet access -->
+        <TextView
+            android:id="@+id/info_source"
+            style="@style/Softring.Note"
+            android:layout_marginTop="2dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:minHeight="48dp"
+            android:gravity="center_vertical" />
+    </LinearLayout>
+</ScrollView>

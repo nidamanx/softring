@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Light palette ("lavender day"), fixed on every Android version: the colors
+    come from the app icon (indigo #2B2766, lavender #E2DFFF, moon gold #FFD58A),
+    not from the wallpaper (no Material You), so the app looks the same for everyone.
+-->
+<resources>
+    <!-- System widgets that use the theme accent, e.g. the time picker dialog -->
+    <color name="accent">#4F4AA8</color>
+    <!-- Switch, sliders and the night hours values -->
+    <color name="control">#2B2766</color>
+    <color name="section_label">#4F4AA8</color>
+    <!-- Slider bar up to the current volume: opaque, the slider drawable already makes it lighter -->
+    <color name="volume_mark">#4F4AA8</color>
+    <color name="background">#ECEAF7</color>
+    <color name="surface">#DEDBF0</color>
+    <color name="text_primary">#1E1C3A</color>
+    <color name="text_secondary">#55526F</color>
+    <color name="accent_container">#2B2766</color>
+    <color name="on_accent_container">#E2DFFF</color>
+    <color name="warning_container">#FBE3BC</color>
+    <color name="on_warning_container">#2A1800</color>
+    <!-- Android 8.0/8.1 cannot draw dark navigation icons: keep a dark scrim -->
+    <color name="nav_bar_scrim">#66000000</color>
+    <!-- Android 10+ three-button navigation bar: the background at 90% -->
+    <color name="nav_bar_tint">#E6ECEAF7</color>
+    <color name="icon_background">#2B2766</color>
+</resources>

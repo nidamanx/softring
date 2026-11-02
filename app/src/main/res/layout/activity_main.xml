@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/app_name"
+                android:textAppearance="@android:style/TextAppearance.Material.Display1"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <!-- Opens the About page -->
+            <ImageButton
+                android:id="@+id/btn_info"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/info_title"
+                android:src="@drawable/ic_info"
+                android:tint="?android:attr/textColorSecondary" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/tagline"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            android:textColor="?android:attr/textColorSecondary" />
+
+        <!-- Current state -->
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_card_accent"
+            android:padding="16dp"
+            android:textAppearance="@android:style/TextAppearance.Material.Subhead"
+            android:textColor="@color/on_accent_container" />
+
+        <!-- Missing Do Not Disturb access -->
+        <LinearLayout
+            android:id="@+id/card_dnd"
+            style="@style/Softring.WarningCard"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/Softring.CardTitle"
+                android:text="@string/perm_dnd_title" />
+
+            <TextView
+                style="@style/Softring.CardText"
+                android:text="@string/perm_dnd_text" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_dnd_dismiss"
+                    style="@style/Softring.CardButton"
+                    android:text="@string/perm_dnd_dismiss" />
+
+                <Button
+                    android:id="@+id/btn_dnd"
+                    style="@style/Softring.CardButton"
+                    android:text="@string/perm_dnd_button" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Missing exact alarm permission (Android 12+) -->
+        <LinearLayout
+            android:id="@+id/card_exact"
+            style="@style/Softring.WarningCard"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/Softring.CardTitle"
+                android:text="@string/perm_exact_title" />
+
+            <TextView
+                android:id="@+id/text_exact"
+                style="@style/Softring.CardText"
+                android:text="@string/perm_exact_text" />
+
+            <Button
+                android:id="@+id/btn_exact"
+                style="@style/Softring.CardButton"
+                android:text="@string/perm_exact_button" />
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/switch_enabled"
+            style="@style/Softring.Card"
+            android:minHeight="64dp"
+            android:text="@string/enable"
+            android:textAppearance="@android:style/TextAppearance.Material.Subhead" />
+
+        <!-- Android 13+: offer to add the Quick Settings tile (shown in code) -->
+        <Button
+            android:id="@+id/btn_add_tile"
+            style="@style/Softring.LinkButton"
+            android:text="@string/add_tile"
+            android:visibility="gone" />
+
+        <!-- When: during the hours below, or always -->
+        <TextView
+            style="@style/Softring.SectionLabel"
+            android:text="@string/section_hours" />
+
+        <!-- paddingStart 16dp minus the radio drawable's own inset: circles line up with the
+             other cards' text. The end keeps the card's 16dp (RtlSymmetry: on purpose) -->
+        <RadioGroup
+            android:id="@+id/when_group"
+            style="@style/Softring.Card"
+            android:orientation="vertical"
+            android:paddingStart="11dp"
+            android:paddingVertical="4dp"
+            tools:ignore="RtlSymmetry">
+
+            <RadioButton
+                android:id="@+id/when_schedule"
+                style="@style/Softring.Radio"
+                android:text="@string/when_schedule" />
+
+            <RadioButton
+                android:id="@+id/when_always"
+                style="@style/Softring.Radio"
+                android:text="@string/when_always" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/card_hours"
+            style="@style/Softring.Card"
+            android:orientation="vertical"
+            android:paddingVertical="4dp">
+
+            <LinearLayout
+                android:id="@+id/row_start"
+                style="@style/Softring.TimeRow">
+
+                <TextView
+                    style="@style/Softring.TimeLabel"
+                    android:text="@string/start" />
+
+                <TextView
+                    android:id="@+id/value_start"
+                    style="@style/Softring.TimeValue" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_end"
+                style="@style/Softring.TimeRow">
+
+                <TextView
+                    style="@style/Softring.TimeLabel"
+                    android:text="@string/end" />
+
+                <TextView
+                    android:id="@+id/value_end"
+                    style="@style/Softring.TimeValue" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/note_follows_hours"
+            style="@style/Softring.Note"
+            android:text="@string/note_follows_hours" />
+
+        <!-- Lowered volume -->
+        <TextView
+            style="@style/Softring.SectionLabel"
+            android:text="@string/section_volume" />
+
+        <LinearLayout
+            style="@style/Softring.Card"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_ring"
+                    style="@style/Softring.TimeLabel"
+                    android:labelFor="@+id/seek_ring"
+                    android:text="@string/ring" />
+
+                <TextView
+                    android:id="@+id/value_ring"
+                    style="@style/Softring.VolumeValue" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/seek_ring"
+                style="@style/Softring.Slider" />
+
+            <!-- Shown when the slider is above the daytime volume: it will not be raised -->
+            <TextView
+                android:id="@+id/hint_ring"
+                style="@style/Softring.VolumeHint" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_notification"
+                    style="@style/Softring.TimeLabel"
+                    android:labelFor="@+id/seek_notification"
+                    android:text="@string/notifications" />
+
+                <TextView
+                    android:id="@+id/value_notification"
+                    style="@style/Softring.VolumeValue" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/seek_notification"
+                style="@style/Softring.Slider" />
+
+            <TextView
+                android:id="@+id/hint_notification"
+                style="@style/Softring.VolumeHint" />
+        </LinearLayout>
+
+        <!-- Preview hint, or "not available" on Android 8 (set in code) -->
+        <TextView
+            android:id="@+id/note_preview"
+            style="@style/Softring.Note" />
+
+        <!-- Debug builds with DebugLog.ENABLED only: diary of the last volume events -->
+        <TextView
+            android:id="@+id/debug_log"
+            style="@style/Softring.Note"
+            android:layout_marginTop="20dp"
+            android:fontFamily="monospace"
+            android:textIsSelectable="true"
+            android:textSize="11sp"
+            android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

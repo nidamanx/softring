@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Softring" parent="Base.Theme.Softring">
+        <item name="android:navigationBarColor">@color/nav_bar_tint</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:enforceNavigationBarContrast">false</item>
+    </style>
+</resources>

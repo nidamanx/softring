@@ -1,0 +1,99 @@
+# Installs and starts the app on real emulators (oldest supported Android,
+# a middle version, a recent one, and a tablet), checks it does not crash and
+# takes a screenshot of the top and of the bottom of the page on each.
+# Manual only, to save Actions minutes (the private dev repo has a monthly quota):
+# Actions > Emulator smoke test > Run workflow, optionally on one API level.
+# Experimental levels (API 37) run only when asked for by name.
+name: Emulator smoke test
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Only this API level (e.g. 37.0); empty = all but experimental"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  emulator:
+    runs-on: ubuntu-24.04
+    # Experimental images may fail for reasons outside the app: reported, not blocking
+    continue-on-error: ${{ matrix.experimental == true }}
+    env:
+      # Jobs not selected start but skip every step (about a minute each)
+      SELECTED: ${{ inputs.only && inputs.only == format('{0}', matrix.api-level) || !inputs.only && matrix.experimental != true }}
+    strategy:
+      fail-fast: false
+      matrix:
+        api-level: [26, 30, 35]
+        device: [phone]
+        include:
+          - api-level: 35
+            device: tablet
+          # Android 17: volume changes from the background need a foreground service
+          # From Android 16 the SDK packages have a minor version: android-37.0
+          # Experimental, manual only: in the API 37 image the guest GL encoder aborts
+          # ("hasReadColorBufferDma", also with -gpu guest), taking down the system
+          # server and screencap (2026-10-31). Android 17 is verified on a real phone.
+          - api-level: "37.0"
+            device: phone
+            experimental: true
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: env.SELECTED == 'true'
+
+      - name: Enable KVM
+        if: env.SELECTED == 'true'
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        if: env.SELECTED == 'true'
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
+        if: env.SELECTED == 'true'
+        with:
+          # MIT-licensed cache: the default "enhanced" one is proprietary since v6
+          cache-provider: basic
+          # The parallel jobs would all try to save the same entry: only build.yml writes it
+          cache-read-only: true
+
+      - name: Build debug APK
+        if: env.SELECTED == 'true'
+        run: ./gradlew --no-daemon assembleDebug
+
+      - name: Install, start and check
+        if: env.SELECTED == 'true'
+        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
+        with:
+          api-level: ${{ matrix.api-level }}
+          arch: x86_64
+          target: ${{ matrix.api-level >= 30 && 'google_apis' || 'default' }}
+          profile: ${{ matrix.device == 'tablet' && 'pixel_tablet' || 'pixel_6' }}
+          disable-animations: true
+          # GitHub runners have 4 cores; recent images are very slow with the default 2
+          cores: 4
+          # Headroom for recent, heavier system images
+          ram-size: 4096M
+          # Recent system images (API 36+) may take longer than the default 600 s to boot
+          emulator-boot-timeout: 1200
+          # The API 37 image leaves too little free space to install an APK with the
+          # default size; the runner has only ~6 GB free and needs 1.2x the size
+          disk-size: 4000M
+          script: scripts/emulator-smoke.sh api${{ matrix.api-level }}-${{ matrix.device }}
+
+      - name: Upload screenshots
+        if: always() && env.SELECTED == 'true'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: screenshots-api${{ matrix.api-level }}-${{ matrix.device }}
+          path: screenshots/
+          if-no-files-found: ignore

@@ -1,0 +1,30 @@
+SoftRing lowers the volume of your ringtone and notifications during the hours you choose, at night, at work or always, and then puts the previous volumes back.
+
+Android modes, such as “Do Not Disturb”, already let you choose who can reach you at night. SoftRing makes sure that, when someone does, the phone does not wake you with a start.
+
+<b>Features</b>
+<ul>
+<li>Hours you choose (default 22:00–07:00)</li>
+<li>Or “Always”: the volume stays lowered until you turn it off, for example at the office</li>
+<li>Hear it first: releasing a slider plays the sound at that level (Android 9+)</li>
+<li>Follows its own hours, not your Android modes: set them to match your sleep mode, even during the day (e.g. 10:00–17:00)</li>
+<li>Separate lowered volume for calls and for messages and notifications</li>
+<li>Daytime volumes restored automatically in the morning</li>
+<li>Keeps working after a reboot, even before the phone is unlocked</li>
+<li>Quick Settings tile: see if SoftRing is on, and until when, and switch it with a tap</li>
+<li>Alarm and media volumes are never changed</li>
+<li>Custom ringtones, for example one set for a contact, stay the same: SoftRing changes only the volume, never the sounds</li>
+<li>If the phone is on vibrate or silent, it is left as it is</li>
+<li>Light and dark theme following the system: lavender by day, indigo by night</li>
+<li>Negligible battery use: it wakes up only for an instant when the volume has to change</li>
+</ul>
+
+<b>Privacy</b>
+<ul>
+<li>No internet access, no data collection, no ads, no trackers</li>
+<li>Settings excluded from backups and phone-to-phone transfers, to protect your privacy</li>
+<li>No access to microphone, camera, location, contacts, phone, messages, files or any other personal data: it does not know who is calling and does not read your notifications</li>
+<li>Your ringtone and notification sound are played only as a short preview when you move a slider</li>
+<li>Only five permissions: start after a reboot, change the volume while “Do Not Disturb” is on, schedule the change at the exact time and, from Android 17, a foreground service lasting an instant to apply the change</li>
+<li>Free software, no third-party libraries, builds designed to be reproducible</li>
+</ul>

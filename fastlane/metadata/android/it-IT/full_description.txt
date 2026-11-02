@@ -1,0 +1,30 @@
+SoftRing abbassa il volume di suoneria e notifiche nelle ore che scegli, di notte, al lavoro o sempre, e alla fine rimette i volumi di prima.
+
+Le modalità di Android, come “Non disturbare”, permettono già di scegliere chi può raggiungerti di notte. SoftRing fa in modo che, quando qualcuno lo fa, il telefono non ti svegli di soprassalto.
+
+<b>Funzioni</b>
+<ul>
+<li>Orario a scelta (preimpostato 22:00–07:00)</li>
+<li>Oppure “Sempre”: il volume resta ridotto finché non lo spegni, per esempio in ufficio</li>
+<li>Senti prima: rilasciando un cursore il suono si sente a quel livello (Android 9+)</li>
+<li>Segue il proprio orario, non le modalità di Android: impostalo come la tua modalità per il sonno, anche di giorno (es. 10:00–17:00)</li>
+<li>Volume ridotto separato per chiamate e per messaggi e notifiche</li>
+<li>Volumi diurni ripristinati automaticamente al mattino</li>
+<li>Continua a funzionare dopo un riavvio, anche prima di sbloccare il telefono</li>
+<li>Riquadro nelle Impostazioni rapide: vedi se SoftRing è attivo, e fino a quando, e lo accendi o spegni con un tocco</li>
+<li>Il volume di sveglie e contenuti multimediali non viene mai modificato</li>
+<li>Le suonerie personalizzate, per esempio quella di un contatto, restano le stesse: SoftRing cambia solo il volume, mai i suoni</li>
+<li>Se il telefono è in vibrazione o silenzioso, viene lasciato così com'è</li>
+<li>Tema chiaro e scuro secondo il sistema: lavanda di giorno, indaco di notte</li>
+<li>Consumo di batteria trascurabile: si attiva solo per un istante quando il volume deve cambiare</li>
+</ul>
+
+<b>Privacy</b>
+<ul>
+<li>Nessun accesso a internet, nessuna raccolta di dati, niente pubblicità né tracker</li>
+<li>Impostazioni escluse dai backup e dai trasferimenti tra telefoni, per proteggere la tua privacy</li>
+<li>Nessun accesso a microfono, fotocamera, posizione, rubrica, telefono, messaggi, file o altri dati personali: non sa chi ti chiama e non legge le tue notifiche</li>
+<li>La tua suoneria e il suono di notifica vengono riprodotti solo come breve anteprima quando sposti un cursore</li>
+<li>Solo cinque autorizzazioni: avvio dopo un riavvio, cambio del volume con “Non disturbare” attivo, cambio all'orario esatto e, da Android 17, un servizio in primo piano di un istante per applicare il cambio</li>
+<li>Software libero, nessuna libreria di terze parti, build progettate per essere riproducibili</li>
+</ul>

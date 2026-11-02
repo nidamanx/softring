@@ -1,0 +1,39 @@
+# Gradle and Android build output, local SDK path
+.gradle/
+.kotlin/
+build/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Emulator screenshots (scripts/emulator-smoke.sh): published as CI artifacts
+/screenshots/
+
+# Built packages: releases are built and published only by GitHub Actions
+*.apk
+*.aab
+
+# Signing: only the ENCRYPTED release key (keystore/softring.jks.enc) may be
+# committed, never a plain keystore. The debug key is public on purpose.
+*.jks
+*.keystore
+*.p12
+!keystore/softring.jks.enc
+!keystore/debug.p12
+
+# Python (art/generate_icon.py)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editors, caches and OS files
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db

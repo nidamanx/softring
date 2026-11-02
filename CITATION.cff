@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this software, or parts of its code, please cite it as below."
+type: software
+title: "SoftRing"
+abstract: >-
+  A tiny Android app that lowers the ringtone and notification volume during the hours
+  you choose (at night, at work or always) and then restores the previous volumes. It
+  complements Android modes such as "Do Not Disturb": they decide who can ring, SoftRing
+  decides how loud. No internet permission, no third-party libraries.
+authors:
+  - given-names: "Nicola Davide"
+    family-names: "Mannarelli"
+    alias: "nidamanx"
+repository-code: "https://github.com/nidamanx/softring"
+url: "https://github.com/nidamanx/softring"
+license: AGPL-3.0-or-later
+version: "1.0.0"
+date-released: "2026-11-02"
+keywords:
+  - android
+  - kotlin
+  - ringtone
+  - ringtone-volume
+  - notification-volume
+  - volume
+  - volume-control
+  - volume-scheduler
+  - quiet-hours
+  - night-mode
+  - bedtime
+  - do-not-disturb
+  - schedule
+  - privacy
+  - no-tracking
+  - foss
+  - f-droid
+  - obtainium
+  - degoogled

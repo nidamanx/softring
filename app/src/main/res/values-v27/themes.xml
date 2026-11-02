@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 8.1+: dark navigation bar icons are available. -->
+<resources>
+    <style name="Theme.Softring" parent="Base.Theme.Softring">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>

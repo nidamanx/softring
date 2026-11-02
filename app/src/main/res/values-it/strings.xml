@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tagline">Una suoneria più dolce quando serve.</string>
+
+    <string name="enable">Abbassa il volume</string>
+    <string name="section_hours">Quando</string>
+    <string name="start">Inizio</string>
+    <string name="end">Fine</string>
+    <string name="section_volume">Volume ridotto</string>
+    <string name="ring">Chiamate</string>
+    <string name="notifications">Messaggi e notifiche</string>
+
+    <string name="status_off">SoftRing è spento. Attivalo qui sotto.</string>
+    <string name="status_invalid">Inizio e fine devono essere diversi.</string>
+    <string name="status_active">Volume ridotto fino alle ore %1$s.</string>
+    <string name="status_next">Il volume si abbassa alle ore %1$s.</string>
+    <string name="status_ringer_silent">In vibrazione o silenzioso il volume non viene cambiato.</string>
+
+    <string name="perm_dnd_title">Per abbassare il volume durante una modalità</string>
+    <string name="perm_dnd_text">Android permette di cambiare il volume, mentre è attiva una modalità (Riposo, Non disturbare…), solo alle app con l’“Accesso a Non disturbare”. SoftRing lo usa solo per il volume: non legge e non modifica le tue modalità. Se non usi modalità, puoi farne a meno.</string>
+    <string name="perm_dnd_button">Concedi accesso</string>
+    <string name="perm_exact_title">Orario esatto non consentito</string>
+    <string name="perm_exact_text">Senza l\'autorizzazione “Sveglie e promemoria”, Android può ritardare il cambio di volume, a volte anche di molto.</string>
+    <string name="perm_exact_text_required">Senza l\'autorizzazione “Sveglie e promemoria”, da Android 17 SoftRing non può cambiare il volume quando l\'app è chiusa: nell\'orario scelto il volume resterebbe com\'è.</string>
+    <string name="perm_exact_button">Consenti</string>
+
+    <string name="note_follows_hours">SoftRing segue questo orario, non le modalità di Android (Non disturbare, Riposo…). Impostalo come la modalità che usi (per dormire, al lavoro…).</string>
+
+    <string name="when_schedule">In questo orario</string>
+    <string name="when_always">Sempre, finché non spegni SoftRing</string>
+    <string name="status_always">Volume ridotto finché non spegni SoftRing.</string>
+    <string name="preview_hint">Quando rilasci un cursore, senti come suonerà.</string>
+    <string name="preview_unavailable">L\'anteprima del volume richiede Android 9 o successivo.</string>
+    <string name="volume_capped">Ora è a %1$d: SoftRing non alza il volume, resterà a %1$d.</string>
+    <string name="preview_silent">Telefono in vibrazione o silenzioso: nessuna anteprima.</string>
+    <string name="volume_value_now">%1$d / %2$d · ora %3$d</string>
+    <string name="perm_dnd_dismiss">Non uso modalità</string>
+    <string name="tile_off">Spento</string>
+    <string name="tile_always">Sempre</string>
+    <string name="tile_until">Fine %1$s</string>
+    <string name="tile_from">Inizio %1$s</string>
+    <string name="add_tile">Aggiungi alle Impostazioni rapide</string>
+    <string name="volume_channel_name">Cambio del volume</string>
+    <string name="volume_notification_text">Cambio del volume in corso</string>
+    <!-- About page -->
+    <string name="info_title">Informazioni</string>
+    <string name="info_version">Versione %1$s</string>
+    <string name="info_how_title">Come funziona</string>
+    <string name="info_how_text">SoftRing abbassa il volume di suoneria e notifiche nell\'orario che scegli, oppure sempre, e alla fine rimette i volumi di prima.</string>
+    <string name="info_modes_text">Segue il proprio orario, non le modalità di Android (Non disturbare, Riposo…). Se una modalità lascia passare le chiamate, SoftRing abbassa comunque il volume.</string>
+    <string name="info_never_title">Cosa non tocca mai</string>
+    <string name="info_never_media">Sveglie e contenuti multimediali.</string>
+    <string name="info_never_vibrate">La vibrazione e il silenzioso: se il telefono è in vibrazione o silenzioso, resta così, e quando torna il suono SoftRing rimette i volumi giusti entro 15 minuti, o subito se apri l\'app.</string>
+    <string name="info_never_raise">Non alza mai il volume: se di giorno è già più basso di quello ridotto, resta com\'è.</string>
+    <string name="info_battery_title">Batteria</string>
+    <string name="info_battery_text">SoftRing non resta in esecuzione: Android lo avvia solo per un istante quando il volume deve cambiare, di solito due volte al giorno. Non serve tenere l\'app aperta né toglierla dall\'ottimizzazione della batteria: puoi chiuderla (ma non con “Forza interruzione”), SoftRing funziona lo stesso.</string>
+    <string name="info_privacy_title">Privacy</string>
+    <string name="info_privacy_text">Nessun accesso a internet, nessuna raccolta di dati, niente pubblicità né tracker. Nessun accesso a microfono, fotocamera, posizione, rubrica, telefono, messaggi, file o altri dati personali: non sa chi ti chiama e non legge le tue notifiche. Le impostazioni sono escluse dai backup e dai trasferimenti tra telefoni.</string>
+    <string name="info_permissions_title">Autorizzazioni</string>
+    <string name="info_perm_dnd">Accesso a Non disturbare: per cambiare il volume mentre è attiva una modalità.</string>
+    <string name="info_perm_exact">Sveglie e promemoria: per cambiare il volume all\'ora esatta.</string>
+    <string name="info_perm_fgs">Servizio in primo piano: da Android 17, per un istante a ogni cambio di volume.</string>
+    <string name="info_author">Autore: %1$s</string>
+    <string name="info_license">Software libero, licenza GNU AGPL v3 o successiva</string>
+    <string name="info_source">Codice sorgente e segnalazioni: %1$s</string>
+    <string name="back">Indietro</string>
+</resources>

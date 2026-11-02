@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        The ONLY permissions this app may request. Every addition must be
+        justified and also added to config/allowed-permissions.txt, otherwise
+        the CI permission check fails. No network permission, ever.
+    -->
+    <!-- Reschedule the night window after a reboot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- Change ringtone volume while Do Not Disturb / a mode is active -->
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <!-- Fire the volume change at the exact time (user-granted on Android 12+) -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <!--
+        Android 17+: volume changes are ignored unless the app has a visible
+        activity or a foreground service, so the change at the scheduled time
+        (and from the tile) runs in a foreground service for less than a second.
+        No data access, no persistent notification. Unused up to Android 16.
+    -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <application
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="${appLabel}"
+        android:localeConfig="@xml/locales_config"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Softring"
+        tools:ignore="UnusedAttribute">
+        <!-- UnusedAttribute: localeConfig (Android 13+) and dataExtractionRules
+             (Android 12+) are simply ignored on older versions, as intended.
+             appLabel: "SoftRing", or "SoftRing D" for test builds (app/build.gradle.kts);
+             the tile keeps "SoftRing" -->
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- About page, opened from the main screen only -->
+        <activity
+            android:name=".InfoActivity"
+            android:exported="false" />
+
+        <!--
+            Quick Settings tile: shows the state and switches SoftRing on or off.
+            android:permission is the permission the SYSTEM must hold to bind it
+            (only the system UI can), not one this app requests.
+        -->
+        <service
+            android:name=".SoftRingTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_tile"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <!-- Android 13+: announced as an on/off switch to accessibility services -->
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
+
+        <!--
+            Android 17+: applies the volume state for alarms, system events and the
+            tile, then stops at once (see VolumeService). directBootAware like the
+            receivers that start it.
+        -->
+        <service
+            android:name=".VolumeService"
+            android:directBootAware="true"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Since Android 17, ringtone and notification volume changes are ignored for apps without a visible activity or a foreground service. This service lowers or restores those volumes at the time chosen by the user, or when the user taps the Quick Settings tile, and stops immediately." />
+        </service>
+
+        <!-- Receives our own alarms only (explicit PendingIntent) -->
+        <receiver
+            android:name=".AlarmReceiver"
+            android:directBootAware="true"
+            android:exported="false" />
+
+        <!--
+            System events. Exported because the system sends them; all of these
+            actions are protected broadcasts that other apps cannot send.
+            directBootAware: runs right after a reboot, before the first unlock,
+            so the night volume is applied even if the phone restarts at 3 AM.
+        -->
+        <receiver
+            android:name=".SystemEventReceiver"
+            android:directBootAware="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

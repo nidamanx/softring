@@ -1,0 +1,11 @@
+# Keep Linux line endings: Windows CRLF would break the shell scripts (bash: $'\r'),
+# gradlew included. Only the Windows wrapper keeps CRLF.
+* text=auto eol=lf
+*.sh text eol=lf
+gradlew text eol=lf
+*.bat text eol=crlf
+
+# Binary files: never touch their bytes
+*.jar binary
+*.png binary
+*.enc binary

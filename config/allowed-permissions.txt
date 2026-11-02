@@ -1,0 +1,9 @@
+# The complete list of permissions SoftRing may request.
+# CI fails if the built APK requests anything not listed here (or misses
+# something listed). Adding a line requires a justification in the manifest
+# comment and in the README permission table. Network permissions are never allowed.
+android.permission.ACCESS_NOTIFICATION_POLICY
+android.permission.FOREGROUND_SERVICE
+android.permission.FOREGROUND_SERVICE_SPECIAL_USE
+android.permission.RECEIVE_BOOT_COMPLETED
+android.permission.SCHEDULE_EXACT_ALARM

@@ -32,6 +32,10 @@ in the "Verifying" section of both READMEs.
    builds and signs the APK, checks the permissions and the certificate,
    creates the attestation and publishes the release with `SHA256SUMS`.
 
+5. Fetch the tag created by the workflow into the local clone:
+   `git fetch origin --tags`. Check the release page: the APK, `SHA256SUMS`
+   and the signing certificate in the notes.
+
 Obtainium users get the update automatically. F-Droid picks up the new tag
 on its own (usually within a few days).
 

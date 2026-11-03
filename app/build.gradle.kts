@@ -55,12 +55,12 @@ android {
     }
 
     buildTypes {
-        // Test builds are a separate app, "SoftRing D", installable next to the released
+        // Test builds are a separate app, "SoftRing-D", installable next to the released
         // one. The release keeps applicationId unchanged. Use only one of the two at a
         // time: both switched on would fight over the same volumes.
         debug {
             applicationIdSuffix = ".dev"
-            manifestPlaceholders["appLabel"] = "SoftRing D"
+            manifestPlaceholders["appLabel"] = "SoftRing-D"
         }
         release {
             isMinifyEnabled = true

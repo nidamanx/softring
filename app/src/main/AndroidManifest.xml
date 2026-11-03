@@ -34,7 +34,7 @@
         tools:ignore="UnusedAttribute">
         <!-- UnusedAttribute: localeConfig (Android 13+) and dataExtractionRules
              (Android 12+) are simply ignored on older versions, as intended.
-             appLabel: "SoftRing", or "SoftRing D" for test builds (app/build.gradle.kts);
+             appLabel: "SoftRing", or "SoftRing-D" for test builds (app/build.gradle.kts);
              the tile keeps "SoftRing" -->
 
         <activity

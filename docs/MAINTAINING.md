@@ -54,7 +54,7 @@ on its own (usually within a few days).
 ## Testing builds
 
 - Every push builds a **debug APK** (*Build* run → *Artifacts*). Debug builds are a
-  separate app, **SoftRing D** (`io.github.nidamanx.softring.dev`), so they can be
+  separate app, **SoftRing-D** (`io.github.nidamanx.softring.dev`), so they can be
   installed next to the released one. Switch on only one of the two at a time: both
   on would fight over the same volumes. Debug builds are signed with the public key
   `keystore/debug.p12`, so each one installs over the previous one.

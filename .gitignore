@@ -14,12 +14,26 @@ captures/
 *.apk
 *.aab
 
-# Signing: only the ENCRYPTED release key (keystore/softring.jks.enc) may be
-# committed, never a plain keystore. The debug key is public on purpose.
+# Secrets never go in the repository, not even encrypted (CI secrets only).
+# The debug key is public on purpose (keystore/README.md).
+.env
+.env.*
+!.env.example
 *.jks
 *.keystore
 *.p12
-!keystore/softring.jks.enc
+*.pfx
+*.pem
+*.key
+*.enc
+*.gpg
+*.age
+*.kdbx
+*.ppk
+id_rsa
+id_ed25519
+.netrc
+credentials.json
 !keystore/debug.p12
 
 # Python (art/generate_icon.py)

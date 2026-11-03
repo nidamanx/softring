@@ -11,10 +11,10 @@
 <img src="fastlane/metadata/android/en-US/images/icon.png" width="96" align="right" alt="SoftRing icon">
 
 **SoftRing** is a small Android app that **lowers the ringtone and notification volume**
-during the hours you choose, at night (default 22:00–07:00), at work or always, and
-then puts the previous volumes back, without touching alarms or media. It is a
-quiet-hours volume scheduler that works alongside Android modes (“Do Not Disturb”,
-“Bedtime”…).
+whenever you want: during the hours you choose, every day (default 22:00–07:00), or
+until you turn it off. Then it puts the previous volumes back, without touching alarms
+or media. It is a quiet-hours volume scheduler that works alongside Android modes
+(“Do Not Disturb”, “Bedtime”…).
 
 It is free software, with no internet access, no ads, no trackers and no third-party
 libraries, and it requests only five permissions. Releases are built, signed and
@@ -45,11 +45,11 @@ hours you choose.
 - [Requirements](#requirements)
 - [Installation](#installation)
   - [Updating](#updating)
+  - [Verifying](#verifying)
 - [Usage](#usage)
 - [Modes and Do Not Disturb](#modes-and-do-not-disturb)
 - [Permissions](#permissions)
 - [Privacy](#privacy)
-- [Verifying](#verifying)
 - [Known limitations](#known-limitations)
 - [Building from source](#building-from-source)
 - [Translations](#translations)
@@ -111,6 +111,40 @@ the phone.
 Obtainium and F-Droid notify you of new versions. A manual install is updated by
 installing the APK of the new release over the old one: settings are kept. Every
 version is signed with the same key (see [Verifying](#verifying)).
+
+### Verifying
+
+Every release is built by GitHub Actions from the tagged source code. Three
+independent checks are available.
+
+**1. Signing certificate.** It is the same for every version. Compare it with
+[AppVerifier](https://github.com/soupslurpr/AppVerifier) or with Obtainium.
+
+```
+io.github.nidamanx.softring
+79:57:C1:B2:4A:CC:AE:E6:30:A9:FA:F8:28:02:FE:18:36:EC:1D:B9:7D:2F:2C:80:F3:B4:67:03:46:2E:BF:9A
+```
+
+The same certificate is also published on the author's website, a source independent
+of GitHub: [ndmnet.eu](https://www.ndmnet.eu/en/skills.html#open-source-tools).
+
+**2. File checksum.** Each release includes `SHA256SUMS`:
+
+```
+sha256sum -c SHA256SUMS
+```
+
+**3. Build provenance.** A signed attestation proves the APK was produced by this
+repository's release workflow from a specific commit:
+
+```
+gh attestation verify softring-<version>.apk --repo nidamanx/softring
+```
+
+Builds are designed to be reproducible: F-Droid builds the app from source on its own servers and
+distributes it only if the result is identical to the APK published here.
+
+To report a security problem, see [SECURITY.md](SECURITY.md).
 
 ## Usage
 
@@ -175,37 +209,6 @@ not read your notifications. It only uses:
 
 You can check it: the source is public, and the build fails if the app ever requests
 another permission.
-
-## Verifying
-
-Every release is built by GitHub Actions from the tagged source code. Three
-independent checks are available.
-
-**1. Signing certificate.** It is the same for every version. Compare it with
-[AppVerifier](https://github.com/soupslurpr/AppVerifier) or with Obtainium.
-
-```
-io.github.nidamanx.softring
-79:57:C1:B2:4A:CC:AE:E6:30:A9:FA:F8:28:02:FE:18:36:EC:1D:B9:7D:2F:2C:80:F3:B4:67:03:46:2E:BF:9A
-```
-
-**2. File checksum.** Each release includes `SHA256SUMS`:
-
-```
-sha256sum -c SHA256SUMS
-```
-
-**3. Build provenance.** A signed attestation proves the APK was produced by this
-repository's release workflow from a specific commit:
-
-```
-gh attestation verify softring-<version>.apk --repo nidamanx/softring
-```
-
-Builds are designed to be reproducible: F-Droid builds the app from source on its own servers and
-distributes it only if the result is identical to the APK published here.
-
-To report a security problem, see [SECURITY.md](SECURITY.md).
 
 ## Known limitations
 

@@ -1,4 +1,4 @@
-SoftRing baja el volumen del tono de llamada y de las notificaciones en las horas que elijas, por la noche, en el trabajo o siempre, y después restablece los volúmenes anteriores.
+SoftRing baja el volumen del tono de llamada y de las notificaciones cuando quieras: en las horas que elijas, cada día, o hasta que lo apagues. Después restablece los volúmenes anteriores.
 
 Los modos de Android, como «No molestar», ya permiten elegir quién puede contactarte por la noche. SoftRing se asegura de que, cuando alguien lo hace, el teléfono no te despierte de golpe.
 

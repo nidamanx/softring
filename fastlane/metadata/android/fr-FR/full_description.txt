@@ -1,4 +1,4 @@
-SoftRing baisse le volume de la sonnerie et des notifications pendant les heures que vous choisissez, la nuit, au travail ou en permanence, puis rétablit les volumes précédents.
+SoftRing baisse le volume de la sonnerie et des notifications quand vous le voulez : pendant les heures que vous choisissez, chaque jour, ou jusqu'à ce que vous le désactiviez. Puis il rétablit les volumes précédents.
 
 Les modes d'Android, comme « Ne pas déranger », permettent déjà de choisir qui peut vous joindre la nuit. SoftRing veille à ce que, lorsque quelqu'un le fait, le téléphone ne vous réveille pas en sursaut.
 

@@ -1,4 +1,4 @@
-SoftRing senkt die Lautstärke von Klingelton und Benachrichtigungen zu den Zeiten, die du wählst, nachts, bei der Arbeit oder immer, und stellt danach die vorherige Lautstärke wieder her.
+SoftRing senkt die Lautstärke von Klingelton und Benachrichtigungen wann du willst: zu den Zeiten, die du wählst, jeden Tag, oder bis du es ausschaltest. Danach stellt es die vorherige Lautstärke wieder her.
 
 Die Android-Modi, wie „Bitte nicht stören“, legen bereits fest, wer dich nachts erreichen darf. SoftRing sorgt dafür, dass dich das Telefon dann nicht aus dem Schlaf reißt.
 

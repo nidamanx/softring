@@ -3,8 +3,9 @@ message: "If you use this software, or parts of its code, please cite it as belo
 type: software
 title: "SoftRing"
 abstract: >-
-  A tiny Android app that lowers the ringtone and notification volume during the hours
-  you choose (at night, at work or always) and then restores the previous volumes. It
+  A tiny Android app that lowers the ringtone and notification volume whenever you
+  want (during the hours you choose, every day, or until it is turned off) and then
+  restores the previous volumes. It
   complements Android modes such as "Do Not Disturb": they decide who can ring, SoftRing
   decides how loud. No internet permission, no third-party libraries.
 authors:

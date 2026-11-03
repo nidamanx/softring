@@ -15,7 +15,9 @@ It exists in two places only:
 Secrets cannot be read back from GitHub: if the backup is lost too, no update
 can ever be signed again and users would have to uninstall and reinstall the
 app. `keystore/certificate-sha256.txt` holds the public fingerprint, also shown
-in the "Verifying" section of both READMEs.
+in the "Verifying" section of both READMEs and on the author's website
+(ndmnet.eu, "Open source tools" section, Italian and English pages): update it
+there too if the key ever changes.
 
 ## Releasing a version
 
@@ -23,15 +25,14 @@ in the "Verifying" section of both READMEs.
    `versionName` (e.g. `1.1.0`).
 2. Add `fastlane/metadata/android/en-US/changelogs/<versionCode>.txt` (English
    only, max 500 characters: stores show it for every language). In
-   `CHANGELOG.md` move the `[Unreleased]` entries to `## [X.Y.Z] - YYYY-MM-DD`. Set the same version
-   in the version badge of `README.md` and `README.it.md`, and `version` /
-   `date-released` in `CITATION.cff`.
+   `CHANGELOG.md` move the `[Unreleased]` entries to `## [X.Y.Z] - YYYY-MM-DD`.
+   Set the same version in the version badge of `README.md` and `README.it.md`,
+   and `version` / `date-released` in `CITATION.cff`.
 3. Commit, wait for the **Build** workflow to be green (its `version` job
    fails if any of the files above does not match `versionName`).
 4. *Actions → Release → Run workflow*. It creates the tag `v<versionName>`,
    builds and signs the APK, checks the permissions and the certificate,
    creates the attestation and publishes the release with `SHA256SUMS`.
-
 5. Fetch the tag created by the workflow into the local clone:
    `git fetch origin --tags`. Check the release page: the APK, `SHA256SUMS`
    and the signing certificate in the notes.

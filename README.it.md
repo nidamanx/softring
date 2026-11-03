@@ -11,10 +11,10 @@
 <img src="fastlane/metadata/android/en-US/images/icon.png" width="96" align="right" alt="Icona di SoftRing">
 
 **SoftRing** è una piccola app Android che **abbassa il volume di suoneria e notifiche**
-nelle ore che scegli, di notte (preimpostato 22:00–07:00), al lavoro o sempre, e alla
-fine rimette i volumi di prima, senza toccare sveglie e contenuti multimediali. È un
-programmatore di volume per le ore di quiete che lavora insieme alle modalità di Android
-(“Non disturbare”, “Riposo”…).
+quando vuoi: nelle ore che scegli, ogni giorno (preimpostato 22:00–07:00), oppure
+finché non lo spegni. Poi rimette i volumi di prima, senza toccare sveglie e contenuti
+multimediali. È un programmatore di volume per le ore di quiete che lavora insieme alle
+modalità di Android (“Non disturbare”, “Riposo”…).
 
 È software libero, senza accesso a internet, pubblicità, tracker o librerie di terze
 parti, e chiede solo cinque autorizzazioni. Le release sono compilate, firmate e
@@ -45,11 +45,11 @@ che scegli.
 - [Requisiti](#requisiti)
 - [Installazione](#installazione)
   - [Aggiornamento](#aggiornamento)
+  - [Verifica](#verifica)
 - [Utilizzo](#utilizzo)
 - [Modalità e Non disturbare](#modalità-e-non-disturbare)
 - [Autorizzazioni](#autorizzazioni)
 - [Privacy](#privacy)
-- [Verifica](#verifica)
 - [Limiti noti](#limiti-noti)
 - [Compilazione dai sorgenti](#compilazione-dai-sorgenti)
 - [Traduzioni](#traduzioni)
@@ -115,6 +115,40 @@ Obtainium e F-Droid segnalano le nuove versioni. Un'installazione manuale si agg
 installando l'APK della nuova release sopra quello vecchio: le impostazioni restano.
 Ogni versione è firmata con la stessa chiave (vedi [Verifica](#verifica)).
 
+### Verifica
+
+Ogni release è compilata da GitHub Actions a partire dal codice sorgente del tag. Sono
+disponibili tre controlli indipendenti.
+
+**1. Certificato di firma.** È lo stesso per ogni versione. Confrontalo con
+[AppVerifier](https://github.com/soupslurpr/AppVerifier) o con Obtainium.
+
+```
+io.github.nidamanx.softring
+79:57:C1:B2:4A:CC:AE:E6:30:A9:FA:F8:28:02:FE:18:36:EC:1D:B9:7D:2F:2C:80:F3:B4:67:03:46:2E:BF:9A
+```
+
+Lo stesso certificato è pubblicato anche sul sito dell'autore, una fonte indipendente
+da GitHub: [ndmnet.eu](https://www.ndmnet.eu/competenze.html#open-source-tools).
+
+**2. Checksum del file.** Ogni release include `SHA256SUMS`:
+
+```
+sha256sum -c SHA256SUMS
+```
+
+**3. Provenienza della build.** Un'attestazione firmata dimostra che l'APK è stato
+prodotto dal workflow di release di questo repository a partire da un commit preciso:
+
+```
+gh attestation verify softring-<versione>.apk --repo nidamanx/softring
+```
+
+Le build sono progettate per essere riproducibili: F-Droid compila l'app dai sorgenti sui propri server e la
+distribuisce solo se il risultato è identico all'APK pubblicato qui.
+
+Per segnalare un problema di sicurezza, vedi [SECURITY.md](SECURITY.md).
+
 ## Utilizzo
 
 1. Apri SoftRing. Parte **spento**: non cambia nulla finché non lo attivi.
@@ -179,37 +213,6 @@ tue notifiche. Usa solo:
 
 Puoi verificarlo: il codice è pubblico, e la build fallisce se l'app chiede qualsiasi
 altra autorizzazione.
-
-## Verifica
-
-Ogni release è compilata da GitHub Actions a partire dal codice sorgente del tag. Sono
-disponibili tre controlli indipendenti.
-
-**1. Certificato di firma.** È lo stesso per ogni versione. Confrontalo con
-[AppVerifier](https://github.com/soupslurpr/AppVerifier) o con Obtainium.
-
-```
-io.github.nidamanx.softring
-79:57:C1:B2:4A:CC:AE:E6:30:A9:FA:F8:28:02:FE:18:36:EC:1D:B9:7D:2F:2C:80:F3:B4:67:03:46:2E:BF:9A
-```
-
-**2. Checksum del file.** Ogni release include `SHA256SUMS`:
-
-```
-sha256sum -c SHA256SUMS
-```
-
-**3. Provenienza della build.** Un'attestazione firmata dimostra che l'APK è stato
-prodotto dal workflow di release di questo repository a partire da un commit preciso:
-
-```
-gh attestation verify softring-<versione>.apk --repo nidamanx/softring
-```
-
-Le build sono progettate per essere riproducibili: F-Droid compila l'app dai sorgenti sui propri server e la
-distribuisce solo se il risultato è identico all'APK pubblicato qui.
-
-Per segnalare un problema di sicurezza, vedi [SECURITY.md](SECURITY.md).
 
 ## Limiti noti
 

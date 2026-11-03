@@ -1,4 +1,4 @@
-SoftRing lowers the volume of your ringtone and notifications during the hours you choose, at night, at work or always, and then puts the previous volumes back.
+SoftRing lowers the volume of your ringtone and notifications whenever you want: during the hours you choose, every day, or until you turn it off. Then it puts the previous volumes back.
 
 Android modes, such as “Do Not Disturb”, already let you choose who can reach you at night. SoftRing makes sure that, when someone does, the phone does not wake you with a start.
 

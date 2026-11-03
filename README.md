@@ -94,7 +94,7 @@ hours you choose.
 
 ## Installation
 
-**Obtainium** (updates straight from GitHub releases): add the app with this URL
+**[Obtainium](https://github.com/ImranR98/Obtainium)** (updates straight from GitHub releases): add the app with this URL
 
 ```
 https://github.com/nidamanx/softring
@@ -118,7 +118,7 @@ Every release is built by GitHub Actions from the tagged source code. Three
 independent checks are available.
 
 **1. Signing certificate.** It is the same for every version. Compare it with
-[AppVerifier](https://github.com/soupslurpr/AppVerifier) or with Obtainium.
+[AppVerifier](https://github.com/soupslurpr/AppVerifier) or with [Obtainium](https://github.com/ImranR98/Obtainium).
 
 ```
 io.github.nidamanx.softring

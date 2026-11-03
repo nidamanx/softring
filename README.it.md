@@ -96,7 +96,7 @@ che scegli.
 
 ## Installazione
 
-**Obtainium** (aggiornamenti direttamente dalle release di GitHub): aggiungi l'app con
+**[Obtainium](https://github.com/ImranR98/Obtainium)** (aggiornamenti direttamente dalle release di GitHub): aggiungi l'app con
 questo URL
 
 ```
@@ -121,7 +121,7 @@ Ogni release è compilata da GitHub Actions a partire dal codice sorgente del ta
 disponibili tre controlli indipendenti.
 
 **1. Certificato di firma.** È lo stesso per ogni versione. Confrontalo con
-[AppVerifier](https://github.com/soupslurpr/AppVerifier) o con Obtainium.
+[AppVerifier](https://github.com/soupslurpr/AppVerifier) o con [Obtainium](https://github.com/ImranR98/Obtainium).
 
 ```
 io.github.nidamanx.softring

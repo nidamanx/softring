@@ -26,7 +26,10 @@ class InfoActivity : Activity() {
         findViewById<View>(R.id.btn_back).setOnClickListener { finish() }
         findViewById<TextView>(R.id.info_version).text = getString(R.string.info_version, versionName())
         showBullets(R.id.info_never, R.string.info_never_media, R.string.info_never_vibrate, R.string.info_never_raise)
-        showBullets(R.id.info_permissions, R.string.info_perm_dnd, R.string.info_perm_exact, R.string.info_perm_fgs)
+        showBullets(
+            R.id.info_permissions, R.string.info_perm_dnd, R.string.info_perm_exact,
+            R.string.info_perm_boot, R.string.info_perm_fgs,
+        )
         findViewById<TextView>(R.id.info_author).text = getString(R.string.info_author, AUTHOR)
         findViewById<TextView>(R.id.info_source).apply {
             text = getString(R.string.info_source, SOURCE_URL.removePrefix("https://"))

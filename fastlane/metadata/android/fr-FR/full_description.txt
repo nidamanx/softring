@@ -4,7 +4,7 @@ Les modes d'Android, comme « Ne pas déranger », permettent déjà de choisir 
 
 <b>Fonctionnalités</b>
 <ul>
-<li>Heures au choix (par défaut 22:00–07:00)</li>
+<li>Heures au choix</li>
 <li>Ou « Toujours » : le volume reste réduit jusqu'à ce que vous le désactiviez, par exemple au bureau</li>
 <li>Écoutez d'abord : en relâchant un curseur, le son est joué à ce niveau (Android 9+)</li>
 <li>Suit ses propres horaires, pas les modes d'Android : réglez-les comme votre mode de sommeil, même en journée (ex. 10:00–17:00)</li>
@@ -25,6 +25,6 @@ Les modes d'Android, comme « Ne pas déranger », permettent déjà de choisir 
 <li>Paramètres exclus des sauvegardes et des transferts entre téléphones, pour protéger votre vie privée</li>
 <li>Aucun accès au micro, à l'appareil photo, à la position, aux contacts, au téléphone, aux messages, aux fichiers ni à aucune autre donnée personnelle : ne sait pas qui vous appelle et ne lit pas vos notifications</li>
 <li>Votre sonnerie et le son des notifications ne sont joués que comme bref aperçu quand vous déplacez un curseur</li>
-<li>Seulement cinq autorisations : démarrage après un redémarrage, changement du volume pendant « Ne pas déranger », changement à l'heure exacte et, à partir d'Android 17, un service au premier plan d'un instant pour appliquer le changement</li>
+<li>Des autorisations uniquement pour changer le volume : démarrage après un redémarrage, changement du volume pendant « Ne pas déranger », changement à l'heure exacte et, à partir d'Android 17, un service au premier plan d'un instant pour appliquer le changement</li>
 <li>Logiciel libre, aucune bibliothèque tierce, builds conçus pour être reproductibles</li>
 </ul>

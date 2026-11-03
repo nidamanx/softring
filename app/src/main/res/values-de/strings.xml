@@ -59,6 +59,7 @@
     <string name="info_permissions_title">Berechtigungen</string>
     <string name="info_perm_dnd">Zugriff auf „Bitte nicht stören“: um die Lautstärke zu ändern, während ein Modus aktiv ist.</string>
     <string name="info_perm_exact">Wecker und Erinnerungen: um die Lautstärke zur genauen Uhrzeit zu ändern.</string>
+    <string name="info_perm_boot">Start beim Hochfahren: um deine Zeiten nach einem Neustart des Telefons wieder anzuwenden.</string>
     <string name="info_perm_fgs">Vordergrunddienst: ab Android 17, einen Augenblick bei jeder Lautstärkeänderung.</string>
     <string name="info_author">Autor: %1$s</string>
     <string name="info_license">Freie Software, Lizenz GNU AGPL v3 oder später</string>

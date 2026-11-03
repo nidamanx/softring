@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- The About page also explains the start-up permission (re-applying your hours after
+  a restart).
+
 ## [1.0.0] - 2026-11-02
 
 First public release.

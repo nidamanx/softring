@@ -4,7 +4,7 @@ Android modes, such as “Do Not Disturb”, already let you choose who can reac
 
 <b>Features</b>
 <ul>
-<li>Hours you choose (default 22:00–07:00)</li>
+<li>Hours you choose</li>
 <li>Or “Always”: the volume stays lowered until you turn it off, for example at the office</li>
 <li>Hear it first: releasing a slider plays the sound at that level (Android 9+)</li>
 <li>Follows its own hours, not your Android modes: set them to match your sleep mode, even during the day (e.g. 10:00–17:00)</li>
@@ -25,6 +25,6 @@ Android modes, such as “Do Not Disturb”, already let you choose who can reac
 <li>Settings excluded from backups and phone-to-phone transfers, to protect your privacy</li>
 <li>No access to microphone, camera, location, contacts, phone, messages, files or any other personal data: it does not know who is calling and does not read your notifications</li>
 <li>Your ringtone and notification sound are played only as a short preview when you move a slider</li>
-<li>Only five permissions: start after a reboot, change the volume while “Do Not Disturb” is on, schedule the change at the exact time and, from Android 17, a foreground service lasting an instant to apply the change</li>
+<li>Permissions only for changing the volume: start after a reboot, change the volume while “Do Not Disturb” is on, schedule the change at the exact time and, from Android 17, a foreground service lasting an instant to apply the change</li>
 <li>Free software, no third-party libraries, builds designed to be reproducible</li>
 </ul>

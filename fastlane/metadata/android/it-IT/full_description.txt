@@ -4,7 +4,7 @@ Le modalità di Android, come “Non disturbare”, permettono già di scegliere
 
 <b>Funzioni</b>
 <ul>
-<li>Orario a scelta (preimpostato 22:00–07:00)</li>
+<li>Orario a scelta</li>
 <li>Oppure “Sempre”: il volume resta ridotto finché non lo spegni, per esempio in ufficio</li>
 <li>Senti prima: rilasciando un cursore il suono si sente a quel livello (Android 9+)</li>
 <li>Segue il proprio orario, non le modalità di Android: impostalo come la tua modalità per il sonno, anche di giorno (es. 10:00–17:00)</li>
@@ -25,6 +25,6 @@ Le modalità di Android, come “Non disturbare”, permettono già di scegliere
 <li>Impostazioni escluse dai backup e dai trasferimenti tra telefoni, per proteggere la tua privacy</li>
 <li>Nessun accesso a microfono, fotocamera, posizione, rubrica, telefono, messaggi, file o altri dati personali: non sa chi ti chiama e non legge le tue notifiche</li>
 <li>La tua suoneria e il suono di notifica vengono riprodotti solo come breve anteprima quando sposti un cursore</li>
-<li>Solo cinque autorizzazioni: avvio dopo un riavvio, cambio del volume con “Non disturbare” attivo, cambio all'orario esatto e, da Android 17, un servizio in primo piano di un istante per applicare il cambio</li>
+<li>Autorizzazioni solo per cambiare il volume: avvio dopo un riavvio, cambio del volume con “Non disturbare” attivo, cambio all'orario esatto e, da Android 17, un servizio in primo piano di un istante per applicare il cambio</li>
 <li>Software libero, nessuna libreria di terze parti, build progettate per essere riproducibili</li>
 </ul>

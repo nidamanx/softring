@@ -11,14 +11,29 @@
 <img src="fastlane/metadata/android/en-US/images/icon.png" width="96" align="right" alt="Icona di SoftRing">
 
 **SoftRing** è una piccola app Android che **abbassa il volume di suoneria e notifiche**
-quando vuoi: nelle ore che scegli, ogni giorno (preimpostato 22:00–07:00), oppure
-finché non lo spegni. Poi rimette i volumi di prima, senza toccare sveglie e contenuti
-multimediali. È un programmatore di volume per le ore di quiete che lavora insieme alle
-modalità di Android (“Non disturbare”, “Riposo”…).
+quando vuoi: nelle ore che scegli, ogni giorno, oppure finché non lo spegni. Poi
+rimette i volumi di prima, senza toccare sveglie e contenuti multimediali. È un
+programmatore di volume per le ore di quiete che lavora insieme alle modalità di Android
+(“Non disturbare”, “Riposo”…).
 
 È software libero, senza accesso a internet, pubblicità, tracker o librerie di terze
-parti, e chiede solo cinque autorizzazioni. Le release sono compilate, firmate e
-verificate da GitHub Actions, e le build sono progettate per essere riproducibili.
+parti. Chiede solo ciò che serve a cambiare il volume all'ora giusta, e spiega il perché
+di ogni autorizzazione. Le release sono compilate, firmate e verificate da GitHub
+Actions, e le build sono progettate per essere riproducibili.
+
+<p align="center">
+  <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/nidamanx/softring"><img src="https://raw.githubusercontent.com/ImranR98/Obtainium/main/assets/graphics/badge_obtainium.png" height="80" alt="Get it on Obtainium"></a>
+  <img src="art/badges/fdroid-coming-soon.png" height="80" alt="Coming soon to F-Droid">
+  <a href="https://github.com/nidamanx/softring/releases/latest"><img src="art/badges/download-apk.png" height="80" alt="Download the APK"></a>
+</p>
+
+Certificato di firma, da confrontare con [AppVerifier](https://github.com/soupslurpr/AppVerifier)
+o [Obtainium](https://github.com/ImranR98/Obtainium) ([altri controlli](#verifica)):
+
+```
+io.github.nidamanx.softring
+79:57:C1:B2:4A:CC:AE:E6:30:A9:FA:F8:28:02:FE:18:36:EC:1D:B9:7D:2F:2C:80:F3:B4:67:03:46:2E:BF:9A
+```
 
 <p align="center">
   <a href="fastlane/metadata/android/it-IT/images/phoneScreenshots/1.png"><img src="fastlane/metadata/android/it-IT/images/phoneScreenshots/1.png" width="200" alt="Schermata principale di SoftRing, tema chiaro: il volume si abbassa alle 22:00"></a>
@@ -61,9 +76,8 @@ che scegli.
 
 ## Funzioni
 
-- **Orario a scelta** (preimpostato 22:00–07:00), anche a cavallo della mezzanotte o
-  di giorno, **oppure sempre**: volume ridotto finché non lo spegni, per esempio in
-  ufficio.
+- **Orario a scelta**, anche a cavallo della mezzanotte o di giorno, **oppure sempre**:
+  volume ridotto finché non lo spegni, per esempio in ufficio.
 - **Due volumi ridotti**: uno per le chiamate, uno per messaggi e notifiche.
 - **Senti prima**: quando rilasci un cursore, la suoneria o il suono di notifica suona
   per un attimo a quel livello (da Android 9).
@@ -152,8 +166,8 @@ Per segnalare un problema di sicurezza, vedi [SECURITY.md](SECURITY.md).
 ## Utilizzo
 
 1. Apri SoftRing. Parte **spento**: non cambia nulla finché non lo attivi.
-2. In "Quando" scegli **In questo orario** e imposta inizio e fine (preimpostato:
-   22:00–07:00), oppure **Sempre**.
+2. In "Quando" scegli **In questo orario** e imposta inizio e fine, oppure
+   **Sempre**.
 3. Imposta il volume ridotto per le chiamate e per messaggi e notifiche. Quando rilasci
    un cursore senti come suonerà.
 4. Attiva "Abbassa il volume". Compare una scheda per ogni autorizzazione ancora da
@@ -246,7 +260,7 @@ in `fastlane/metadata/android/*/`. Le correzioni sono benvenute.
 ```
 softring/
 ├── app/        l'app (Kotlin, solo API della piattaforma) e i suoi test
-├── art/        icona e banner degli store
+├── art/        icona, banner degli store e badge di installazione
 ├── config/     le sole autorizzazioni che l'APK può chiedere
 ├── docs/       note per chi mantiene il progetto
 ├── fastlane/   testi e schermate degli store per lingua, changelog in inglese

@@ -78,6 +78,10 @@ on its own (usually within a few days).
 - The store **feature graphic** (1024×500, five languages, tagline taken from the
   app strings) is generated too: `python3 art/generate_feature_graphic.py` (needs
   `cairosvg` and the Roboto font). Run it again after changing the icon or a tagline.
+- The README **install badges** "Coming soon to F-Droid" and "Download the APK" are
+  generated: `python3 art/generate_badges.py` (same needs). The Obtainium badge is the
+  official one, linked. Once the app is on F-Droid, replace the "coming soon" badge with
+  the official "Get it on F-Droid" badge linking to the app page.
 
 ## Screenshots
 

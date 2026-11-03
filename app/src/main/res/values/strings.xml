@@ -62,6 +62,7 @@
     <string name="info_permissions_title">Permissions</string>
     <string name="info_perm_dnd">Do Not Disturb access: to change the volume while a mode is on.</string>
     <string name="info_perm_exact">Alarms &amp; reminders: to change the volume at the exact time.</string>
+    <string name="info_perm_boot">Run at startup: to apply your hours again after the phone restarts.</string>
     <string name="info_perm_fgs">Foreground service: from Android 17, for an instant at each volume change.</string>
     <string name="info_author">Author: %1$s</string>
     <string name="info_license">Free software, GNU AGPL v3 or later license</string>

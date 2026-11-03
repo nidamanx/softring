@@ -59,6 +59,7 @@
     <string name="info_permissions_title">Permisos</string>
     <string name="info_perm_dnd">Acceso a No molestar: para cambiar el volumen mientras hay un modo activo.</string>
     <string name="info_perm_exact">Alarmas y recordatorios: para cambiar el volumen a la hora exacta.</string>
+    <string name="info_perm_boot">Inicio al encender: para volver a aplicar tu horario tras reiniciar el teléfono.</string>
     <string name="info_perm_fgs">Servicio en primer plano: desde Android 17, un instante en cada cambio de volumen.</string>
     <string name="info_author">Autor: %1$s</string>
     <string name="info_license">Software libre, licencia GNU AGPL v3 o posterior</string>

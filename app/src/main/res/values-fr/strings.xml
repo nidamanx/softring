@@ -59,6 +59,7 @@
     <string name="info_permissions_title">Autorisations</string>
     <string name="info_perm_dnd">Accès à Ne pas déranger : pour changer le volume quand un mode est actif.</string>
     <string name="info_perm_exact">Alarmes et rappels : pour changer le volume à l\'heure exacte.</string>
+    <string name="info_perm_boot">Lancement au démarrage : pour réappliquer vos horaires après un redémarrage du téléphone.</string>
     <string name="info_perm_fgs">Service au premier plan : à partir d\'Android 17, un instant à chaque changement de volume.</string>
     <string name="info_author">Auteur : %1$s</string>
     <string name="info_license">Logiciel libre, licence GNU AGPL v3 ou ultérieure</string>

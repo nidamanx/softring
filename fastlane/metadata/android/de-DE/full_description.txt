@@ -4,7 +4,7 @@ Die Android-Modi, wie „Bitte nicht stören“, legen bereits fest, wer dich na
 
 <b>Funktionen</b>
 <ul>
-<li>Frei wählbare Zeit (voreingestellt 22:00–07:00)</li>
+<li>Frei wählbare Zeit</li>
 <li>Oder „Immer“: die Lautstärke bleibt gesenkt, bis du es ausschaltest, zum Beispiel im Büro</li>
 <li>Erst hören: beim Loslassen eines Reglers erklingt der Ton in dieser Lautstärke (Android 9+)</li>
 <li>Folgt einer eigenen Zeit, nicht den Android-Modi: stelle sie wie deinen Schlafmodus ein, auch tagsüber (z. B. 10:00–17:00)</li>
@@ -25,6 +25,6 @@ Die Android-Modi, wie „Bitte nicht stören“, legen bereits fest, wer dich na
 <li>Einstellungen von Backups und Übertragungen zwischen Telefonen ausgeschlossen, um deine Privatsphäre zu schützen</li>
 <li>Kein Zugriff auf Mikrofon, Kamera, Standort, Kontakte, Telefon, Nachrichten, Dateien oder andere persönliche Daten: weiß nicht, wer anruft, und liest deine Benachrichtigungen nicht</li>
 <li>Dein Klingelton und Benachrichtigungston werden nur als kurze Vorschau abgespielt, wenn du einen Regler bewegst</li>
-<li>Nur fünf Berechtigungen: Start nach einem Neustart, Lautstärkeänderung bei aktivem „Bitte nicht stören“, Änderung zur genauen Uhrzeit und, ab Android 17, ein Vordergrunddienst für einen Augenblick, um die Änderung anzuwenden</li>
+<li>Berechtigungen nur für die Lautstärkeänderung: Start nach einem Neustart, Lautstärkeänderung bei aktivem „Bitte nicht stören“, Änderung zur genauen Uhrzeit und, ab Android 17, ein Vordergrunddienst für einen Augenblick, um die Änderung anzuwenden</li>
 <li>Freie Software, keine Bibliotheken von Drittanbietern, auf reproduzierbare Builds ausgelegt</li>
 </ul>

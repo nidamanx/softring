@@ -11,14 +11,29 @@
 <img src="fastlane/metadata/android/en-US/images/icon.png" width="96" align="right" alt="SoftRing icon">
 
 **SoftRing** is a small Android app that **lowers the ringtone and notification volume**
-whenever you want: during the hours you choose, every day (default 22:00–07:00), or
-until you turn it off. Then it puts the previous volumes back, without touching alarms
-or media. It is a quiet-hours volume scheduler that works alongside Android modes
-(“Do Not Disturb”, “Bedtime”…).
+whenever you want: during the hours you choose, every day, or until you turn it off.
+Then it puts the previous volumes back, without touching alarms or media. It is a
+quiet-hours volume scheduler that works alongside Android modes (“Do Not Disturb”,
+“Bedtime”…).
 
 It is free software, with no internet access, no ads, no trackers and no third-party
-libraries, and it requests only five permissions. Releases are built, signed and
-verified by GitHub Actions, and the builds are designed to be reproducible.
+libraries. It asks only for what it needs to change the volume at the right time, and
+explains why for each permission. Releases are built, signed and verified by GitHub
+Actions, and the builds are designed to be reproducible.
+
+<p align="center">
+  <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/nidamanx/softring"><img src="https://raw.githubusercontent.com/ImranR98/Obtainium/main/assets/graphics/badge_obtainium.png" height="80" alt="Get it on Obtainium"></a>
+  <img src="art/badges/fdroid-coming-soon.png" height="80" alt="Coming soon to F-Droid">
+  <a href="https://github.com/nidamanx/softring/releases/latest"><img src="art/badges/download-apk.png" height="80" alt="Download the APK"></a>
+</p>
+
+Signing certificate, to check with [AppVerifier](https://github.com/soupslurpr/AppVerifier)
+or [Obtainium](https://github.com/ImranR98/Obtainium) ([other checks](#verifying)):
+
+```
+io.github.nidamanx.softring
+79:57:C1:B2:4A:CC:AE:E6:30:A9:FA:F8:28:02:FE:18:36:EC:1D:B9:7D:2F:2C:80:F3:B4:67:03:46:2E:BF:9A
+```
 
 <p align="center">
   <a href="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png"><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="200" alt="SoftRing main screen, light theme: the volume goes down at 10:00 PM"></a>
@@ -61,8 +76,8 @@ hours you choose.
 
 ## Features
 
-- **Hours you choose** (default 22:00–07:00), also across midnight or during the
-  day, **or always**: lowered until you turn it off, for example at the office.
+- **Hours you choose**, also across midnight or during the day, **or always**: lowered
+  until you turn it off, for example at the office.
 - **Two lowered volumes**: one for calls, one for messages and notifications.
 - **Hear it first**: when you release a slider, the ringtone or notification sound
   plays briefly at that level (Android 9 and later).
@@ -149,8 +164,8 @@ To report a security problem, see [SECURITY.md](SECURITY.md).
 ## Usage
 
 1. Open SoftRing. It starts **switched off**: nothing changes until you turn it on.
-2. Under "When", choose **During these hours** and set start and end (default:
-   22:00–07:00), or **Always**.
+2. Under "When", choose **During these hours** and set start and end, or
+   **Always**.
 3. Set the lowered volume for calls and for messages and notifications. When you
    release a slider you hear how it will sound.
 4. Turn on "Lower the volume". A card appears for each permission still to be
@@ -240,7 +255,7 @@ App texts are in `app/src/main/res/values-*/strings.xml`, store texts in
 ```
 softring/
 ├── app/        the app (Kotlin, platform APIs only) and its unit tests
-├── art/        icon and store banner
+├── art/        icon, store banner and install badges
 ├── config/     the only permissions the APK may request
 ├── docs/       notes for maintainers
 ├── fastlane/   store texts and screenshots per language, changelogs in English

@@ -60,8 +60,8 @@ on its own (usually within a few days).
   builds are signed with the debug key from the `DEBUG_KEYSTORE_BASE64` and
   `DEBUG_KEYSTORE_PASSWORD` secrets (same format as the release key, backup in the
   password manager), so each one installs over the previous one; the Build fails there
-  if the secrets are missing or the certificate differs from
-  `keystore/debug-certificate-sha256.txt`. Elsewhere (public repository, forks, local
+  if the secrets are missing (except on pull requests, which get no secrets) or the
+  certificate differs from `keystore/debug-certificate-sha256.txt`. Elsewhere (public repository, forks, local
   builds) the SDK's own debug key is used. Losing the debug key only means generating a
   new one and reinstalling SoftRing-D once.
 - Debug builds can keep a **diary** of the last volume events, shown at the

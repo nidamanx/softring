@@ -245,7 +245,7 @@ softring/
 ├── docs/       notes for maintainers
 ├── fastlane/   store texts and screenshots per language, changelogs in English
 ├── fdroid/     draft of the F-Droid build recipe
-├── keystore/   release key fingerprint, public debug key
+├── keystore/   signing certificate fingerprints
 ├── scripts/    scripts used by the automated checks
 └── .github/    GitHub Actions workflows
 ```

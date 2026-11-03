@@ -4,11 +4,9 @@
 # secrets live only in CI secrets and in the owner's password manager.
 set -euo pipefail
 
-# Files that look like secrets but are public on purpose (e.g. a public debug key).
-# One repository path per entry; keep this list as short as possible.
-ALLOWED=(
-  keystore/debug.p12  # public debug key, on purpose (keystore/README.md)
-)
+# Files that look like secrets but are public on purpose. Empty: no key of any kind is
+# kept in the repository. One repository path per entry, if ever needed.
+ALLOWED=()
 
 usage() {
   cat <<'USAGE'

@@ -15,7 +15,6 @@ captures/
 *.aab
 
 # Secrets never go in the repository, not even encrypted (CI secrets only).
-# The debug key is public on purpose (keystore/README.md).
 .env
 .env.*
 !.env.example
@@ -34,7 +33,6 @@ id_rsa
 id_ed25519
 .netrc
 credentials.json
-!keystore/debug.p12
 
 # Python (art/generate_icon.py)
 __pycache__/

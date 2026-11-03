@@ -50,8 +50,56 @@ jobs:
           # MIT-licensed cache: the default "enhanced" one is proprietary since v6
           cache-provider: basic
 
-      - name: Unit tests, lint and build
-        run: ./gradlew --no-daemon test lintRelease assembleDebug assembleRelease
+      - name: Unit tests, lint and release build
+        run: ./gradlew --no-daemon test lintRelease assembleRelease
+
+      - name: Decrypt the debug key
+        # Only the private development repository has the debug key, so its test builds
+        # install over each other; elsewhere the SDK's own debug key is used.
+        id: debug_key
+        env:
+          REPO_PRIVATE: ${{ github.event.repository.private }}
+          DEBUG_KEYSTORE_PASSWORD: ${{ secrets.DEBUG_KEYSTORE_PASSWORD }}
+          DEBUG_KEYSTORE_BASE64: ${{ secrets.DEBUG_KEYSTORE_BASE64 }}
+        run: |
+          if [[ -z $DEBUG_KEYSTORE_BASE64 || -z $DEBUG_KEYSTORE_PASSWORD ]]; then
+            # Pull requests (e.g. Dependabot) get no secrets: SDK key, no error
+            if [[ $REPO_PRIVATE == true && $GITHUB_EVENT_NAME != pull_request ]]; then
+              echo "::error::The DEBUG_KEYSTORE_BASE64 or DEBUG_KEYSTORE_PASSWORD secret is missing (docs/MAINTAINING.md)."
+              exit 1
+            fi
+            echo "No debug key here: the debug APK is signed with the SDK's own debug key."
+            exit 0
+          fi
+          printf '%s' "$DEBUG_KEYSTORE_BASE64" | base64 -d \
+            | openssl enc -d -aes-256-cbc -pbkdf2 -iter 600000 \
+                -out "$RUNNER_TEMP/debug.p12" -pass env:DEBUG_KEYSTORE_PASSWORD
+          echo "file=$RUNNER_TEMP/debug.p12" >> "$GITHUB_OUTPUT"
+
+      - name: Debug build
+        env:
+          SOFTRING_DEBUG_KEYSTORE_FILE: ${{ steps.debug_key.outputs.file }}
+          SOFTRING_DEBUG_KEYSTORE_PASSWORD: ${{ secrets.DEBUG_KEYSTORE_PASSWORD }}
+        run: ./gradlew --no-daemon assembleDebug
+
+      - name: Remove the debug key
+        if: always()
+        run: rm -f "$RUNNER_TEMP/debug.p12"
+
+      - name: Check the debug signing certificate
+        if: steps.debug_key.outputs.file
+        run: |
+          apksigner="$(ls -d "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -n 1)"
+          "$apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk \
+            > "$RUNNER_TEMP/debug-certs.txt"
+          # Public data, embedded in every APK: who the certificate names and its fingerprint
+          grep -E 'certificate (DN|SHA-256 digest):' "$RUNNER_TEMP/debug-certs.txt"
+          signed="$(sed -n 's/.*certificate SHA-256 digest: //p' "$RUNNER_TEMP/debug-certs.txt" | head -n 1)"
+          expected="$(tr -d ':\n' < keystore/debug-certificate-sha256.txt | tr 'A-F' 'a-f')"
+          if [[ $signed != "$expected" ]]; then
+            echo "::error::Debug APK certificate ($signed) differs from keystore/debug-certificate-sha256.txt ($expected)"
+            exit 1
+          fi
 
       - name: Check permissions
         run: scripts/check-permissions.sh app/build/outputs/apk/release/app-release-unsigned.apk

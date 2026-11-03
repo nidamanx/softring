@@ -251,7 +251,7 @@ softring/
 ├── docs/       note per chi mantiene il progetto
 ├── fastlane/   testi e schermate degli store per lingua, changelog in inglese
 ├── fdroid/     bozza della ricetta di build per F-Droid
-├── keystore/   impronta della chiave di release, chiave di debug pubblica
+├── keystore/   impronte dei certificati di firma
 ├── scripts/    script usati dai controlli automatici
 └── .github/    workflow di GitHub Actions
 ```

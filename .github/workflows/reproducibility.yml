@@ -1,0 +1,119 @@
+# Checks that the release build is reproducible: four independent builds of the same
+# commit, on four runners, two by two in different conditions (folder, time zone, file
+# mode mask), must give the same unsigned APK byte for byte. Four, not two: a
+# difference that appears only sometimes (as R8's with several threads did) is more
+# likely to show up. F-Droid relies on this: it builds the app itself and accepts the
+# published signature only if the results match.
+# Manual only, before each release: Actions > Reproducibility > Run workflow.
+name: Reproducibility
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reproducibility-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - variant: a1
+            dir: softring
+            tz: UTC
+            umask: "0022"
+          - variant: a2
+            dir: softring
+            tz: UTC
+            umask: "0022"
+          - variant: b1
+            dir: elsewhere/another-name
+            tz: Pacific/Kiritimati
+            umask: "0002"
+          - variant: b2
+            dir: elsewhere/another-name
+            tz: Pacific/Kiritimati
+            umask: "0002"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          path: ${{ matrix.dir }}
+
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
+
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
+        with:
+          # Each build starts from nothing, as F-Droid's does
+          cache-disabled: true
+
+      - name: Unsigned release build
+        working-directory: ${{ matrix.dir }}
+        env:
+          TZ: ${{ matrix.tz }}
+          UMASK: ${{ matrix.umask }}
+        run: |
+          umask "$UMASK"
+          ./gradlew --no-daemon assembleRelease
+          cp app/build/outputs/apk/release/app-release-unsigned.apk "$RUNNER_TEMP/softring-unsigned.apk"
+          sha256sum "$RUNNER_TEMP/softring-unsigned.apk"
+
+      - name: Keep the APK for the comparison
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: unsigned-${{ matrix.variant }}
+          path: ${{ runner.temp }}/softring-unsigned.apk
+          retention-days: 1
+          if-no-files-found: error
+
+  compare:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Get the APKs
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: unsigned-*
+          path: apks
+
+      - name: Compare
+        run: |
+          sha256sum apks/*/softring-unsigned.apk | tee "$RUNNER_TEMP/sums.txt"
+          if [[ $(cut -d' ' -f1 "$RUNNER_TEMP/sums.txt" | sort -u | wc -l) -eq 1 ]]; then
+            echo "Reproducible: all four builds give the unsigned APK $(head -c 64 "$RUNNER_TEMP/sums.txt")" \
+              | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          # For each build that differs from the first: the APK entries that differ
+          # (usually classes.dex, with R8's map id; a time or a path written into a file)
+          python3 - apks/*/softring-unsigned.apk <<'PY'
+          import sys, zipfile
+          def entries(path):
+              z = zipfile.ZipFile(path)
+              return {i.filename: (i.CRC, i.file_size) for i in z.infolist()}, [i.filename for i in z.infolist()]
+          first = sys.argv[1]
+          ea, oa = entries(first)
+          for other in sys.argv[2:]:
+              eb, ob = entries(other)
+              diff = sorted(n for n in ea.keys() | eb.keys() if ea.get(n) != eb.get(n))
+              if not diff and oa == ob:
+                  continue
+              what = diff[:30] or ["same content, different zip metadata" + (" and order" if oa != ob else "")]
+              name = other.split("/")[1]
+              print(f"::error title=Not reproducible ({name} vs {first.split('/')[1]})::" + "%0A".join(what))
+          PY
+          exit 1

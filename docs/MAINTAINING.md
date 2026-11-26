@@ -22,10 +22,15 @@ ever changes.
    and `version` / `date-released` in `CITATION.cff`.
 3. Commit, wait for the **Build** workflow to be green (its `version` job
    fails if any of the files above does not match `versionName`).
-4. *Actions → Release → Run workflow*. It creates the tag `v<versionName>`,
+4. Check this commit before releasing it:
+   - *Actions → Reproducibility → Run workflow* must be green: four separate
+     builds give the same APK, as F-Droid's own build must match the released one;
+   - install the debug APK of that Build over the previous SoftRing-D: the
+     settings must still be there (update test).
+5. *Actions → Release → Run workflow*. It creates the tag `v<versionName>`,
    builds and signs the APK, checks the permissions and the certificate,
    creates the attestation and publishes the release with `SHA256SUMS`.
-5. Fetch the tag created by the workflow into the local clone:
+6. Fetch the tag created by the workflow into the local clone:
    `git fetch origin --tags`. Check the release page: the APK, `SHA256SUMS`
    and the signing certificate in the notes.
 

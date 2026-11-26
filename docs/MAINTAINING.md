@@ -4,20 +4,12 @@ Everything happens on GitHub: no local tools are required.
 
 ## Release key
 
-The release signing key is never stored in the repository, not even encrypted.
-It exists in two places only:
-
-- the repository secrets (*Settings → Secrets and variables → Actions*):
-  `KEYSTORE_PASSWORD` (long random password) and `KEYSTORE_BASE64` (the key
-  encrypted with that password, as base64 text);
-- an offline backup of both values in a password manager.
-
-Secrets cannot be read back from GitHub: if the backup is lost too, no update
-can ever be signed again and users would have to uninstall and reinstall the
-app. `keystore/certificate-sha256.txt` holds the public fingerprint, also shown
-in the "Verifying" section of both READMEs and on the author's website
-(ndmnet.eu, "Open source tools" section, Italian and English pages): update it
-there too if the key ever changes.
+The release signing key is never stored in the repository. The Release workflow
+reads it from the repository secrets `KEYSTORE_BASE64` and `KEYSTORE_PASSWORD`.
+`keystore/certificate-sha256.txt` holds the public fingerprint, also shown in the
+"Verifying" section of both READMEs and on the author's website (ndmnet.eu, "Open
+source tools" section, Italian and English pages): update it there too if the key
+ever changes.
 
 ## Releasing a version
 

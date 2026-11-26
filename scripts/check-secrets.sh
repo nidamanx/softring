@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# Fails if a key, credential or other secret is in the repository, even encrypted:
-# secrets live only in CI secrets and in the owner's password manager.
+# Fails if a key, credential or other secret is in the repository, even encrypted.
 set -euo pipefail
 
 # Files that look like secrets but are public on purpose. Empty: no key of any kind is

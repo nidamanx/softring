@@ -20,6 +20,7 @@ permissions:
 jobs:
   emulator:
     runs-on: ubuntu-24.04
+    timeout-minutes: 45
     # Experimental images may fail for reasons outside the app: reported, not blocking
     continue-on-error: ${{ matrix.experimental == true }}
     env:

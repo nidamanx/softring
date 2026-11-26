@@ -1,7 +1,7 @@
 # Installs and starts the app on real emulators (oldest supported Android,
 # a middle version, a recent one, and a tablet), checks it does not crash and
 # takes a screenshot of the top and of the bottom of the page on each.
-# Manual only, to save Actions minutes (the private dev repo has a monthly quota):
+# Manual only (a full run takes about an hour):
 # Actions > Emulator smoke test > Run workflow, optionally on one API level.
 # Experimental levels (API 37) run only when asked for by name.
 name: Emulator smoke test

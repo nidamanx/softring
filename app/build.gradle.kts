@@ -17,9 +17,8 @@ val releaseKeyAlias: String = System.getenv("SOFTRING_KEY_ALIAS") ?: "softring"
 val hasReleaseSigning = !keystoreFile.isNullOrBlank() && !keystorePassword.isNullOrBlank()
 
 // Debug signing: the fixed debug key only where its environment variables are set (the
-// Build workflow of the private development repository, from its secrets), so test
-// builds install over each other. Elsewhere (public repository, forks, local builds)
-// the Android SDK's own debug key of that machine is used.
+// Build workflow of this repository), so test builds install over each other. Elsewhere
+// (forks, local builds) the Android SDK's own debug key of that machine is used.
 val debugKeystoreFile: String? = System.getenv("SOFTRING_DEBUG_KEYSTORE_FILE")
 val debugKeystorePassword: String? = System.getenv("SOFTRING_DEBUG_KEYSTORE_PASSWORD")
 val hasDebugSigning = !debugKeystoreFile.isNullOrBlank() && !debugKeystorePassword.isNullOrBlank()

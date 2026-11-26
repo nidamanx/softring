@@ -56,13 +56,12 @@ on its own (usually within a few days).
 - Every push builds a **debug APK** (*Build* run → *Artifacts*). Debug builds are a
   separate app, **SoftRing-D** (`io.github.nidamanx.softring.dev`), so they can be
   installed next to the released one. Switch on only one of the two at a time: both
-  on would fight over the same volumes. In the private development repository debug
-  builds are signed with the debug key from the `DEBUG_KEYSTORE_BASE64` and
-  `DEBUG_KEYSTORE_PASSWORD` secrets (same format as the release key, backup in the
-  password manager), so each one installs over the previous one; the Build fails there
-  if the secrets are missing (except on pull requests, which get no secrets) or the
-  certificate differs from `keystore/debug-certificate-sha256.txt`. Elsewhere (public repository, forks, local
-  builds) the SDK's own debug key is used. Losing the debug key only means generating a
+  on would fight over the same volumes. In this repository debug builds are signed
+  with a fixed debug key (`DEBUG_KEYSTORE_BASE64` and `DEBUG_KEYSTORE_PASSWORD`
+  secrets), so each one installs over the previous one; the Build fails if the secrets
+  are missing (except on pull requests, which may get no secrets) or the certificate
+  differs from `keystore/debug-certificate-sha256.txt`. Forks and local builds use the
+  SDK's own debug key. Losing the debug key only means generating a
   new one and reinstalling SoftRing-D once.
 - Debug builds can keep a **diary** of the last volume events, shown at the
   bottom of the screen and in logcat (tag `SoftRing`). It is off: set `ENABLED`
@@ -71,8 +70,8 @@ on its own (usually within a few days).
 - The **emulator test** runs only by hand (*Actions → Emulator smoke test → Run
   workflow*); the *Only this API level* field runs a single level (e.g. `30`).
   API 37 is experimental and runs only when asked for by name (`37.0`).
-- **Dependabot** pull requests are not merged: the same update is committed on the
-  development branch, then Dependabot closes its pull request by itself.
+- **Dependabot** pull requests: merge them on GitHub once their Build is green, then
+  bring the local copy up to date (`git pull --ff-only origin main`).
 - The **icon** is generated: edit `art/generate_icon.py`, then run
   `python3 art/generate_icon.py` (needs `cairosvg` for the store PNG).
 - The store **feature graphic** (1024×500, five languages, tagline taken from the

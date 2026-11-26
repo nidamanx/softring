@@ -36,10 +36,10 @@ io.github.nidamanx.softring
 ```
 
 <p align="center">
-  <a href="fastlane/metadata/android/it-IT/images/phoneScreenshots/1.png"><img src="fastlane/metadata/android/it-IT/images/phoneScreenshots/1.png" width="200" alt="Schermata principale di SoftRing, tema chiaro: il volume si abbassa alle 22:00"></a>
-  <a href="fastlane/metadata/android/it-IT/images/phoneScreenshots/2.png"><img src="fastlane/metadata/android/it-IT/images/phoneScreenshots/2.png" width="200" alt="SoftRing di notte, tema scuro: volume ridotto fino alle 07:00"></a>
-  <a href="fastlane/metadata/android/it-IT/images/phoneScreenshots/3.png"><img src="fastlane/metadata/android/it-IT/images/phoneScreenshots/3.png" width="200" alt="Riquadro di SoftRing nelle Impostazioni rapide: fine alle 07:00"></a>
-  <a href="fastlane/metadata/android/it-IT/images/phoneScreenshots/4.png"><img src="fastlane/metadata/android/it-IT/images/phoneScreenshots/4.png" width="200" alt="Pagina Informazioni di SoftRing: come funziona, privacy, autorizzazioni"></a>
+  <a href="fastlane/metadata/android/it-IT/images/phoneScreenshots/1.png"><img src="fastlane/metadata/android/it-IT/images/phoneScreenshots/1.png" width="170" alt="Schermata principale di SoftRing, tema chiaro: il volume si abbassa alle 22:00"></a>
+  <a href="fastlane/metadata/android/it-IT/images/phoneScreenshots/2.png"><img src="fastlane/metadata/android/it-IT/images/phoneScreenshots/2.png" width="170" alt="SoftRing di notte, tema scuro: volume ridotto fino alle 07:00"></a>
+  <a href="fastlane/metadata/android/it-IT/images/phoneScreenshots/3.png"><img src="fastlane/metadata/android/it-IT/images/phoneScreenshots/3.png" width="170" alt="Riquadro di SoftRing nelle Impostazioni rapide: fine alle 07:00"></a>
+  <a href="fastlane/metadata/android/it-IT/images/phoneScreenshots/4.png"><img src="fastlane/metadata/android/it-IT/images/phoneScreenshots/4.png" width="170" alt="Pagina Informazioni di SoftRing: come funziona, privacy, autorizzazioni"></a>
 </p>
 
 ## Perché

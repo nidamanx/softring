@@ -36,10 +36,10 @@ io.github.nidamanx.softring
 ```
 
 <p align="center">
-  <a href="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png"><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="200" alt="SoftRing main screen, light theme: the volume goes down at 10:00 PM"></a>
-  <a href="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png"><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="200" alt="SoftRing at night, dark theme: volume lowered until 7:00 AM"></a>
-  <a href="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png"><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="200" alt="SoftRing tile in Quick Settings: until 7:00 AM"></a>
-  <a href="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png"><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width="200" alt="SoftRing About page: how it works, privacy, permissions"></a>
+  <a href="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png"><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="170" alt="SoftRing main screen, light theme: the volume goes down at 10:00 PM"></a>
+  <a href="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png"><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="170" alt="SoftRing at night, dark theme: volume lowered until 7:00 AM"></a>
+  <a href="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png"><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="170" alt="SoftRing tile in Quick Settings: until 7:00 AM"></a>
+  <a href="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png"><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width="170" alt="SoftRing About page: how it works, privacy, permissions"></a>
 </p>
 
 ## Why

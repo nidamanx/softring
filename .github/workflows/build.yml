@@ -111,6 +111,21 @@ jobs:
       - name: Check permissions
         run: scripts/check-permissions.sh app/build/outputs/apk/release/app-release-unsigned.apk
 
+      - name: Sign the release APK as the Release workflow does
+        # Same script as the release, with a throwaway key made here and deleted at once
+        run: |
+          SOFTRING_KEYSTORE_PASSWORD=$(openssl rand -hex 24)
+          export SOFTRING_KEYSTORE_PASSWORD
+          keytool -genkeypair -keystore "$RUNNER_TEMP/throwaway.p12" -storetype PKCS12 \
+            -alias throwaway -keyalg RSA -keysize 2048 -validity 1 -dname "CN=throwaway" \
+            -storepass:env SOFTRING_KEYSTORE_PASSWORD -keypass:env SOFTRING_KEYSTORE_PASSWORD
+          status=0
+          scripts/sign-apk.sh "$RUNNER_TEMP/throwaway.p12" throwaway \
+            app/build/outputs/apk/release/app-release-unsigned.apk "$RUNNER_TEMP/release-test-signed.apk" \
+            || status=$?
+          rm -f "$RUNNER_TEMP/throwaway.p12" "$RUNNER_TEMP/release-test-signed.apk"
+          exit "$status"
+
       - name: Name the debug APK
         # e.g. softring-debug-1.0.0-82af82e.apk: version and commit, to tell test builds apart
         id: debug_apk

@@ -7,14 +7,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
-// Release signing is configured only when the keystore is provided through
-// environment variables (see .github/workflows/release.yml). Local and CI
-// builds without these variables produce an unsigned release APK, which is
-// exactly what F-Droid needs for its reproducibility check.
-val keystoreFile: String? = System.getenv("SOFTRING_KEYSTORE_FILE")
-val keystorePassword: String? = System.getenv("SOFTRING_KEYSTORE_PASSWORD")
-val releaseKeyAlias: String = System.getenv("SOFTRING_KEY_ALIAS") ?: "softring"
-val hasReleaseSigning = !keystoreFile.isNullOrBlank() && !keystorePassword.isNullOrBlank()
+// The release APK is always built unsigned (as F-Droid needs for its reproducibility
+// check); the Release workflow signs it afterwards with scripts/sign-apk.sh.
 
 // Debug signing: the fixed debug key only where its environment variables are set (the
 // Build workflow of this repository), so test builds install over each other. Elsewhere
@@ -48,17 +42,6 @@ android {
                 keyPassword = debugKeystorePassword
             }
         }
-        if (hasReleaseSigning) {
-            create("release") {
-                storeFile = file(keystoreFile!!)
-                storePassword = keystorePassword
-                keyAlias = releaseKeyAlias
-                keyPassword = keystorePassword
-                enableV1Signing = false
-                enableV2Signing = true
-                enableV3Signing = true
-            }
-        }
     }
 
     buildTypes {
@@ -79,9 +62,6 @@ android {
             // Do not embed git metadata: keeps the APK identical regardless of
             // how the source was checked out (reproducible builds).
             vcsInfo.include = false
-            if (hasReleaseSigning) {
-                signingConfig = signingConfigs.getByName("release")
-            }
         }
     }
 

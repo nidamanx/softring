@@ -25,6 +25,15 @@ ver=$(sed -n 's/^[[:space:]]*versionName = "\(.*\)"$/\1/p' app/build.gradle.kts)
 code=$(sed -n 's/^[[:space:]]*versionCode = \([0-9]*\)$/\1/p' app/build.gradle.kts)
 echo "versionName=$ver versionCode=$code"
 fail=0
+# The version names the tag and the release files: digits only, X.Y.Z
+if [[ ! $ver =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+  echo "::error file=app/build.gradle.kts::versionName '$ver' is not X.Y.Z"
+  fail=1
+fi
+if [[ ! $code =~ ^[1-9][0-9]*$ ]]; then
+  echo "::error file=app/build.gradle.kts::versionCode '$code' is not a positive number"
+  fail=1
+fi
 expect() {  # file, what, found, wanted
   if [[ $3 != "$4" ]]; then
     echo "::error file=$1::$2 is '$3', expected '$4'"

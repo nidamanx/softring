@@ -1,60 +1,63 @@
-# Builds, signs and publishes a release.
-# Two ways to start it:
-#  - "Run workflow" in the Actions tab, on main only: releases the versionName
-#    currently in app/build.gradle.kts and creates the tag v<versionName> itself.
-#  - Pushing a tag v<versionName> (e.g. git push origin v1.0.0).
+# Builds, signs and publishes a release: "Run workflow" in the Actions tab, on main.
+# Releases the versionName currently in app/build.gradle.kts and creates the tag
+# v<versionName>. Two jobs:
+#  - build: tests, lint and the unsigned release APK (Gradle);
+#  - publish: signs the APK with apksigner, checks it, creates the attestation, the
+#    tag and the release.
 name: Release
 
 on:
-  push:
-    tags: ["v*"]
   workflow_dispatch:
 
-permissions:
-  contents: write      # create the tag and the release
-  id-token: write      # sign the build provenance attestation
-  attestations: write  # store the attestation
-  artifact-metadata: write  # artifact storage record (attest v4)
+# Each job asks for what it needs
+permissions: {}
 
 concurrency:
   group: release
   cancel-in-progress: false
 
 jobs:
-  release:
+  build:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
-    env:
-      GH_TOKEN: ${{ github.token }}
+    permissions:
+      contents: read
+    outputs:
+      name: ${{ steps.version.outputs.name }}
+      tag: ${{ steps.version.outputs.tag }}
+      changelog: ${{ steps.version.outputs.changelog }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
-      - name: Read version
+      - name: Read and check the version
         id: version
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          name="$(sed -n 's/^[[:space:]]*versionName = "\(.*\)"/\1/p' app/build.gradle.kts)"
-          code="$(sed -n 's/^[[:space:]]*versionCode = \([0-9]*\)/\1/p' app/build.gradle.kts)"
-          tag="v$name"
-          if [[ $GITHUB_EVENT_NAME == push && $GITHUB_REF_NAME != "$tag" ]]; then
-            echo "::error::Tag $GITHUB_REF_NAME does not match versionName $name in app/build.gradle.kts"
-            exit 1
-          fi
-          if [[ $GITHUB_EVENT_NAME == workflow_dispatch && $GITHUB_REF != refs/heads/main ]]; then
+          if [[ $GITHUB_REF != refs/heads/main ]]; then
             echo "::error::Run the release from main, not from $GITHUB_REF"
             exit 1
           fi
-          if [[ $GITHUB_EVENT_NAME == workflow_dispatch ]] && git ls-remote --exit-code --tags origin "refs/tags/$tag" >/dev/null; then
+          # Same checks as the Build workflow (versionName X.Y.Z included), plus a released
+          # CHANGELOG section
+          scripts/check-version.sh --release
+          name=$(sed -n 's/^[[:space:]]*versionName = "\(.*\)"$/\1/p' app/build.gradle.kts)
+          code=$(sed -n 's/^[[:space:]]*versionCode = \([0-9]*\)$/\1/p' app/build.gradle.kts)
+          tag="v$name"
+          # Only a "not found" lets the release go on: any other answer is an error
+          if out=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$tag" 2>&1); then
             echo "::error::Tag $tag already exists. Increase versionName and versionCode first."
             exit 1
+          elif [[ $out != *"HTTP 404"* ]]; then
+            echo "::error::Cannot check whether tag $tag exists: $out"
+            exit 1
           fi
-          # Same checks as the Build workflow, plus a released CHANGELOG section
-          scripts/check-version.sh --release
-          changelog="fastlane/metadata/android/en-US/changelogs/$code.txt"
           {
             echo "name=$name"
-            echo "code=$code"
             echo "tag=$tag"
-            echo "changelog=$changelog"
+            echo "changelog=fastlane/metadata/android/en-US/changelogs/$code.txt"
           } >> "$GITHUB_OUTPUT"
 
       - name: Validate Gradle wrapper
@@ -67,12 +70,49 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
         with:
-          # MIT-licensed cache: the default "enhanced" one is proprietary since v6
-          cache-provider: basic
-          # Release builds always start from a clean state
-          cache-read-only: true
+          # A release starts from a clean state: nothing restored from the caches written
+          # by the other workflows
+          cache-disabled: true
 
-      - name: Decrypt signing key
+      - name: Test, lint and unsigned release build
+        run: ./gradlew --no-daemon test lintRelease assembleRelease
+
+      - name: Check permissions
+        run: scripts/check-permissions.sh app/build/outputs/apk/release/app-release-unsigned.apk
+
+      - name: Keep the unsigned APK for the publish job
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: release-unsigned
+          path: app/build/outputs/apk/release/app-release-unsigned.apk
+          retention-days: 1
+          if-no-files-found: error
+
+  publish:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write           # create the tag and the release
+      id-token: write           # sign the build provenance attestation
+      attestations: write       # store the attestation
+      artifact-metadata: write  # artifact storage record (attest v4)
+    env:
+      NAME: ${{ needs.build.outputs.name }}
+      TAG: ${{ needs.build.outputs.tag }}
+      CHANGELOG: ${{ needs.build.outputs.changelog }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Get the unsigned APK
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: release-unsigned
+          path: ${{ runner.temp }}/unsigned
+
+      - name: Decrypt the release key
         env:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
@@ -83,53 +123,47 @@ jobs:
           fi
           printf '%s' "$KEYSTORE_BASE64" | base64 -d \
             | openssl enc -d -aes-256-cbc -pbkdf2 -iter 600000 \
-                -out "$RUNNER_TEMP/softring.jks" -pass env:KEYSTORE_PASSWORD
+                -out "$RUNNER_TEMP/release.p12" -pass env:KEYSTORE_PASSWORD
 
-      - name: Test, lint and build signed APK
+      # The Build workflow runs the same script with a throwaway key
+      - name: Sign with apksigner
         env:
-          SOFTRING_KEYSTORE_FILE: ${{ runner.temp }}/softring.jks
           SOFTRING_KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-        run: ./gradlew --no-daemon test lintRelease assembleRelease
+        run: >-
+          scripts/sign-apk.sh "$RUNNER_TEMP/release.p12" softring
+          "$RUNNER_TEMP/unsigned/app-release-unsigned.apk" "dist/softring-$NAME.apk"
 
       - name: Remove the plain key
         if: always()
-        run: rm -f "$RUNNER_TEMP/softring.jks"
+        run: rm -f "$RUNNER_TEMP/release.p12"
 
-      - name: Check permissions
-        run: scripts/check-permissions.sh app/build/outputs/apk/release/app-release.apk
-
-      - name: Verify signature and prepare files
-        id: files
+      - name: Verify the signature and prepare the files
         run: |
-          apk="softring-${{ steps.version.outputs.name }}.apk"
-          mkdir -p dist
-          cp app/build/outputs/apk/release/app-release.apk "dist/$apk"
-
-          apksigner="$(ls -d "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -n 1)"
+          apk="softring-$NAME.apk"
+          apksigner=$(ls -d "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -n 1)
           "$apksigner" verify --verbose --print-certs "dist/$apk" | tee "$RUNNER_TEMP/certs.txt"
 
           # The APK must be signed with the key whose fingerprint is published
-          signed="$(sed -n 's/.*certificate SHA-256 digest: //p' "$RUNNER_TEMP/certs.txt" | head -n 1)"
-          expected="$(tr -d ':\n' < keystore/certificate-sha256.txt | tr 'A-F' 'a-f')"
+          signed=$(sed -n 's/.*certificate SHA-256 digest: //p' "$RUNNER_TEMP/certs.txt" | head -n 1)
+          expected=$(tr -d ':\n' < keystore/certificate-sha256.txt | tr 'A-F' 'a-f')
           if [[ $signed != "$expected" ]]; then
             echo "::error::APK certificate ($signed) differs from keystore/certificate-sha256.txt ($expected)"
             exit 1
           fi
+          scripts/check-permissions.sh "dist/$apk"
 
           (cd dist && sha256sum "$apk" > SHA256SUMS)
-          echo "apk=$apk" >> "$GITHUB_OUTPUT"
-          echo "cert=$signed" >> "$GITHUB_OUTPUT"
 
       - name: Attest build provenance
         uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
-          subject-path: dist/${{ steps.files.outputs.apk }}
+          subject-path: dist/softring-${{ needs.build.outputs.name }}.apk
 
       - name: Write release notes
         run: |
-          apk="${{ steps.files.outputs.apk }}"
+          apk="softring-$NAME.apk"
           {
-            cat "${{ steps.version.outputs.changelog }}"
+            cat "$CHANGELOG"
             echo
             echo "## Verify"
             echo
@@ -142,7 +176,8 @@ jobs:
             echo "Signing certificate SHA-256:"
             echo
             echo '```'
-            echo "${{ steps.files.outputs.cert }}"
+            tr -d ':\n' < keystore/certificate-sha256.txt | tr 'A-F' 'a-f'
+            echo
             echo '```'
             echo
             echo "Build provenance:"
@@ -152,16 +187,12 @@ jobs:
             echo '```'
           } > "$RUNNER_TEMP/notes.md"
 
-      - name: Publish release
-        run: |
-          tag="${{ steps.version.outputs.tag }}"
-          if gh release view "$tag" >/dev/null 2>&1; then
-            # Release created by hand from the web UI: attach files and notes
-            gh release upload "$tag" dist/* --clobber
-            gh release edit "$tag" --notes-file "$RUNNER_TEMP/notes.md"
-          else
-            gh release create "$tag" dist/* \
-              --target "$GITHUB_SHA" \
-              --title "SoftRing ${{ steps.version.outputs.name }}" \
-              --notes-file "$RUNNER_TEMP/notes.md"
-          fi
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh release create "$TAG" dist/*
+          --repo "$GITHUB_REPOSITORY"
+          --target "$GITHUB_SHA"
+          --title "SoftRing $NAME"
+          --notes-file "$RUNNER_TEMP/notes.md"
